@@ -135,6 +135,8 @@ def on_click_start(subject_matter_selected, level_selected):
     st.session_state.session_id = str(uuid.uuid4())
     st.session_state.page_flow = FLOW_QUESTION
 
+    load_question()
+
 def on_click_elaborate_more_the_explanation():
     chain = prompt_elaborate_more | llm
     parameters = {
@@ -326,19 +328,19 @@ match st.session_state.page_flow:
         show_config_train()
 
     case 1:  # FLOW_QUESTION
-        if st.session_state.first_run:
-            st.session_state.first_run = False
-            load_question()
+        # if st.session_state.first_run:
+        #     st.session_state.first_run = False
+        #     load_question()
 
-        if st.session_state.page_flow == 2: # FLOW_RESULTS
-            show_results()
-        else:
-            show_question()
+        # if st.session_state.page_flow == 2: # FLOW_RESULTS
+        #     show_results()
+        # else:
+        show_question()
 
-            if st.session_state.show_explanation:
-                show_explanation()
-            if st.session_state.show_elaborate_more:
-                show_elaborate_more()
+        if st.session_state.show_explanation:
+            show_explanation()
+        if st.session_state.show_elaborate_more:
+            show_elaborate_more()
 
     case 2: # FLOW_RESULTS
         show_results()
