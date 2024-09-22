@@ -22,6 +22,10 @@ st.write(
     """
 )
 
+#############################################
+############### STATE
+#############################################
+
 FLOW_CONFIGURATION = 0
 FLOW_QUESTION = 1
 FLOW_RESULTS = 2
@@ -44,22 +48,9 @@ if "answered_correct" not in st.session_state:
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
 
-
-def load_question():
-    print("----------------- LOADING QUESTION FUNCTION ------------------")
-
-    response = supabase.table("get_question").select("*").execute()
-    qty = len(response.data)
-
-    if qty > 0:
-        st.session_state.question = response.data[0]
-        print(st.session_state.question)
-
-    else:
-        st.info("No more questions available")
-        # st.session_state.no_more_questions_available = True
-        st.session_state.page_flow = FLOW_RESULTS
-
+#############################################
+############### LISTENERS
+#############################################
 
 def on_click_verify_answer(answer):
     print("----------------- on_click_verify_answer ------------------")
@@ -78,6 +69,37 @@ def on_click_verify_answer(answer):
     print("dont know")
     st.session_state.show_explanation = True
 
+def on_click_end_session():
+    st.session_state.page_flow = FLOW_RESULTS
+
+
+def on_click_next():
+    st.session_state.show_explanation = False
+    load_question()
+
+#############################################
+############### OTHER FUNCTIONS
+#############################################
+
+def load_question():
+    print("----------------- LOADING QUESTION FUNCTION ------------------")
+
+    response = supabase.table("get_question").select("*").execute()
+    qty = len(response.data)
+
+    if qty > 0:
+        st.session_state.question = response.data[0]
+        print(st.session_state.question)
+
+    else:
+        st.info("No more questions available")
+        # st.session_state.no_more_questions_available = True
+        st.session_state.page_flow = FLOW_RESULTS
+
+
+#############################################
+############### WIDGETS
+#############################################
 
 def show_question():
     print("----------------- show_question ------------------")
@@ -129,10 +151,11 @@ def show_explanation():
             st.success("Correct answer!")
         else:
             st.error("Wrong answer!")
+        st.session_state.answered_correct = None
         
     explanation = st.session_state.question["explanation"]
     
-    st.write("")  # Empty string
+    # st.write("")  # Empty string
     st.write("")  # Empty string
     st.write(
         rf"""
@@ -151,9 +174,12 @@ def show_explanation():
     
     # col3.button("Elaborate more the explanation", on_click=on_click_elaborate_more_the_explanation)
     
-    # col4.button("Next", on_click=on_click_next)
-    col4.button("Next")
+    col4.button("Next", on_click=on_click_next)
 
+
+#############################################
+############### WIDGET CONTROL
+#############################################
 
 match st.session_state.page_flow:
     # case 0: # FLOW_CONFIGURATION
