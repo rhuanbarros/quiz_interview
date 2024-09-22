@@ -1,6 +1,7 @@
 import uuid
 from supabase import create_client, Client
 import streamlit as st
+import pandas as pd
 
 import os
 from dotenv import load_dotenv
@@ -139,7 +140,7 @@ def show_question():
         _, col2, col3 = st.columns([1, 3, 3])
         col2.button("I don't know", key="btn_dont_know",
                     on_click=on_click_verify_answer, args=["DONT_KNOW"])
-        # col3.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
+        col3.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
         col3.button("Ends session", key="btn_end_session")
 
 
@@ -170,11 +171,37 @@ def show_explanation():
     
     _, col2, col3, col4, _ = st.columns([5,7,14,7,5])
     
-    # col2.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
+    col2.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
     
     # col3.button("Elaborate more the explanation", on_click=on_click_elaborate_more_the_explanation)
     
     col4.button("Next", on_click=on_click_next)
+
+def show_results():
+    st.write(
+        rf"""
+        #### Resuls
+        """
+    )
+    
+    answered_questions = st.session_state.answered_questions
+    df = pd.DataFrame(answered_questions)
+    
+    if df.shape[0] > 0:        
+        correct_mask = df['correct_answer'] == 1
+        correct_df = df.loc[ correct_mask ].groupby(["subject_matter_1", "level"])['correct_answer'].sum().reset_index()
+        incorrect_mask = df['correct_answer'] == 0
+        incorrect_df = df.loc[ incorrect_mask ].groupby(["subject_matter_1", "level"])['correct_answer'].count().reset_index()
+        incorrect_df = incorrect_df.rename(columns={"correct_answer": "incorrect_answer"})
+        
+        df_results = pd.merge(correct_df, incorrect_df, on=["subject_matter_1", "level"], how='outer')
+        df_results.fillna(0, inplace=True)
+        df_results["correct_answer"] = df_results["correct_answer"].astype(int)
+        df_results["incorrect_answer"] = df_results["incorrect_answer"].astype(int)
+        df_results
+
+    st.button("Start over again", on_click=on_click_start_over_again)
+
 
 
 #############################################
@@ -196,5 +223,5 @@ match st.session_state.page_flow:
         if st.session_state.show_explanation:
             show_explanation()
 
-    # case 2: # FLOW_RESULTS
-    #     show_results()
+    case 2: # FLOW_RESULTS
+        show_results()
