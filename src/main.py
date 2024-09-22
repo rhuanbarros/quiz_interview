@@ -35,7 +35,7 @@ if "first_run" not in st.session_state:
     st.session_state.first_run = True
 
 if "page_flow" not in st.session_state:
-    st.session_state.page_flow = FLOW_QUESTION
+    st.session_state.page_flow = FLOW_CONFIGURATION
 
 if "question" not in st.session_state:
     st.session_state.question = None
@@ -48,6 +48,9 @@ if "answered_correct" not in st.session_state:
 
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
+
+if "subject_matter_selected" not in st.session_state:
+    st.session_state.subject_matter_selected = []
 
 #############################################
 ############### LISTENERS
@@ -78,6 +81,25 @@ def on_click_next():
     st.session_state.show_explanation = False
     load_question()
 
+def on_click_start_over_again():
+    # reset app state
+    st.session_state.first_run = True
+    st.session_state.page_flow = FLOW_CONFIGURATION
+    st.session_state.question = None
+    st.session_state.show_explanation = False
+    st.session_state.answered_correct = None
+    # st.session_state.answered_questions = []
+    # st.session_state.subject_matter_1s_list_selected = []
+    # st.session_state.topic_descriptions_list_selected = []
+    # st.session_state.use_subject_matter_1_filter = True
+    # st.session_state.questions_available = False
+
+def on_click_start(subject_matter_selected, ):
+    if "All" in subject_matter_selected:
+        subject_matter_selected.remove("All")
+    
+    st.session_state.page_flow = FLOW_QUESTION
+
 #############################################
 ############### OTHER FUNCTIONS
 #############################################
@@ -85,7 +107,17 @@ def on_click_next():
 def load_question():
     print("----------------- LOADING QUESTION FUNCTION ------------------")
 
-    response = supabase.table("get_question").select("*").execute()
+    subject_matter_selected = st.session_state.subject_matter_selected
+
+    if len(subject_matter_selected) == 0:
+        response = supabase.table("get_question").select("*").execute()
+    else:
+        query = supabase.table("get_question").select("*")
+        for item in subject_matter_selected:
+            query = query.eq("subject_matter", item)
+
+        response = query.execute()        
+    
     qty = len(response.data)
 
     if qty > 0:
@@ -97,10 +129,36 @@ def load_question():
         # st.session_state.no_more_questions_available = True
         st.session_state.page_flow = FLOW_RESULTS
 
+@st.cache_resource
+def get_subject_matter():
+    response = supabase.table('get_subject_matter').select("*").execute()
+    data_list = ["All"]
+    for row in response.data:
+        data_list.append(row["subject_matter"])
+    
+    return data_list
+
 
 #############################################
 ############### WIDGETS
 #############################################
+
+def show_config_train():
+    st.write(
+        rf"""
+        #### Configuration
+        """
+    )
+    subject_matter_list_selected = st.multiselect("Subject matter", get_subject_matter(), ["All"])
+    
+    st.button("Start!", on_click=on_click_start, args=[subject_matter_list_selected])
+
+    # _, col2, col3, _ = st.columns([5,7,7,5])
+    # col2.button("Start!", on_click=on_click_start, args=[subject_matter_1s_list_selected])
+    # col2.button("Start! (Restart questions if necessary)", on_click=on_click_start_restart, args=[subject_matter_1s_list_selected])
+    # col2.button("Start Subject matter 1", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, True])
+    # col3.button("Start Topic description", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, False])
+
 
 def show_question():
     print("----------------- show_question ------------------")
@@ -187,7 +245,7 @@ def show_results():
     response = supabase.table('get_report').select("*").eq("session_id", st.session_state.session_id).execute()
     st.write( pd.DataFrame(response.data) )
 
-    # st.button("Start over again", on_click=on_click_start_over_again)
+    st.button("Start over again", on_click=on_click_start_over_again)
 
 
 
@@ -196,9 +254,9 @@ def show_results():
 #############################################
 
 match st.session_state.page_flow:
-    # case 0: # FLOW_CONFIGURATION
-    #     supabase.table('question_filters').delete().gt('id', 0).execute()
-    #     show_config_train()
+    case 0: # FLOW_CONFIGURATION
+        # supabase.table('question_filters').delete().gt('id', 0).execute()
+        show_config_train()
 
     case 1:  # FLOW_QUESTION
         if st.session_state.first_run:
