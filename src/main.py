@@ -141,7 +141,7 @@ def show_question():
         col2.button("I don't know", key="btn_dont_know",
                     on_click=on_click_verify_answer, args=["DONT_KNOW"])
         col3.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
-        col3.button("Ends session", key="btn_end_session")
+        # col3.button("Ends session", key="btn_end_session")
 
 
 def show_explanation():
@@ -180,27 +180,14 @@ def show_explanation():
 def show_results():
     st.write(
         rf"""
-        #### Resuls
+        #### Results
         """
     )
     
-    answered_questions = st.session_state.answered_questions
-    df = pd.DataFrame(answered_questions)
-    
-    if df.shape[0] > 0:        
-        correct_mask = df['correct_answer'] == 1
-        correct_df = df.loc[ correct_mask ].groupby(["subject_matter_1", "level"])['correct_answer'].sum().reset_index()
-        incorrect_mask = df['correct_answer'] == 0
-        incorrect_df = df.loc[ incorrect_mask ].groupby(["subject_matter_1", "level"])['correct_answer'].count().reset_index()
-        incorrect_df = incorrect_df.rename(columns={"correct_answer": "incorrect_answer"})
-        
-        df_results = pd.merge(correct_df, incorrect_df, on=["subject_matter_1", "level"], how='outer')
-        df_results.fillna(0, inplace=True)
-        df_results["correct_answer"] = df_results["correct_answer"].astype(int)
-        df_results["incorrect_answer"] = df_results["incorrect_answer"].astype(int)
-        df_results
+    response = supabase.table('get_report').select("*").eq("session_id", st.session_state.session_id).execute()
+    st.write( pd.DataFrame(response.data) )
 
-    st.button("Start over again", on_click=on_click_start_over_again)
+    # st.button("Start over again", on_click=on_click_start_over_again)
 
 
 
