@@ -3,6 +3,10 @@ from supabase import create_client, Client
 import streamlit as st
 import pandas as pd
 
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain.prompts import PromptTemplate
+
 import os
 from dotenv import load_dotenv
 load_dotenv()  # take environment variables from .env.
@@ -11,17 +15,6 @@ url: str = os.environ.get("SUPABASE_URL")
 key: str = os.environ.get("SUPABASE_KEY")
 supabase: Client = create_client(url, key)
 
-
-st.set_page_config(
-    page_title="Machine Learning Interview Preparation Trainer",
-    page_icon="💪💪💪",
-)
-
-st.write(
-    """
-    # Machine Learning Interview Preparation Trainer
-    """
-)
 
 #############################################
 ############### STATE
@@ -55,6 +48,38 @@ if "subject_matter_selected" not in st.session_state:
 if "level_selected" not in st.session_state:
     st.session_state.level_selected = []
 
+if "show_elaborate_more" not in st.session_state:
+    st.session_state.show_elaborate_more = False
+
+if "elaborate_more_content" not in st.session_state:
+    st.session_state.elaborate_more_content = ""
+
+#############################################
+############### GENERATIVE AI
+#############################################
+
+print('Inicializando LLM')
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
+
+prompt_elaborate_more = PromptTemplate(
+    template="""
+                TASK CONTEXT:
+                I am studying machine learning practicing some questions.
+                
+                TASK DESCRIPTION:
+                I need you to act like a professor.
+                I need you to think critical if the said correct answer is indeed correct.
+                You should give a elaborated explanation.
+                                
+                TASK REQUIREMENTS:
+                Use at least 2 sentences to explain your answer.
+                
+                QUESTION:
+                {question}
+            """,
+    input_variables=["question"]
+)
+
 #############################################
 ############### LISTENERS
 #############################################
@@ -82,6 +107,7 @@ def on_click_end_session():
 
 def on_click_next():
     st.session_state.show_explanation = False
+    st.session_state.show_elaborate_more = False
     load_question()
 
 def on_click_start_over_again():
@@ -108,6 +134,17 @@ def on_click_start(subject_matter_selected, level_selected):
     
     st.session_state.session_id = str(uuid.uuid4())
     st.session_state.page_flow = FLOW_QUESTION
+
+def on_click_elaborate_more_the_explanation():
+    chain = prompt_elaborate_more | llm
+    parameters = {
+        "question": st.session_state.question
+    }
+    response = chain.invoke(parameters)
+
+    st.session_state.show_elaborate_more = True
+    st.session_state.elaborate_more_content = response.content
+
 
 #############################################
 ############### OTHER FUNCTIONS
@@ -162,7 +199,6 @@ def get_level():
         data_list.append(row["level"])
     
     return data_list
-
 
 #############################################
 ############### WIDGETS
@@ -249,7 +285,7 @@ def show_explanation():
     
     col2.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
     
-    # col3.button("Elaborate more the explanation", on_click=on_click_elaborate_more_the_explanation)
+    col3.button("Elaborate more the explanation", on_click=on_click_elaborate_more_the_explanation)
     
     col4.button("Next", on_click=on_click_next)
 
@@ -265,11 +301,24 @@ def show_results():
 
     st.button("Start over again", on_click=on_click_start_over_again)
 
-
+def show_elaborate_more():
+    st.info(f'{st.session_state.elaborate_more_content}', icon="ℹ️")
 
 #############################################
 ############### WIDGET CONTROL
 #############################################
+
+st.set_page_config(
+    page_title="Machine Learning Interview Preparation Trainer",
+    page_icon="💪💪💪",
+)
+
+st.write(
+    """
+    # Machine Learning Interview Preparation Trainer
+    """
+)
+
 
 match st.session_state.page_flow:
     case 0: # FLOW_CONFIGURATION
@@ -288,6 +337,8 @@ match st.session_state.page_flow:
 
             if st.session_state.show_explanation:
                 show_explanation()
+            if st.session_state.show_elaborate_more:
+                show_elaborate_more()
 
     case 2: # FLOW_RESULTS
         show_results()
