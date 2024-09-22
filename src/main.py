@@ -121,9 +121,6 @@ def load_question():
 
     query = supabase.table("get_question").select("*")
 
-    # print("subject_matter_selected")
-    # print(subject_matter_selected)
-
     for item in subject_matter_selected:
         query = query.eq("subject_matter", item)
     
