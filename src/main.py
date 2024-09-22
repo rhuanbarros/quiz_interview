@@ -71,10 +71,26 @@ def show_question():
 
     st.write("")  # Empty string
 
+    col1, col2 = st.columns([1,10])
+    col1.button("A")
+    col2.write(question["answer_a"])
+    
+    col1, col2 = st.columns([1,10])
+    col1.button("B")
+    col2.write(question["answer_b"])
+    
+    col1, col2 = st.columns([1,10])
+    col1.button("C")
+    col2.write(question["answer_c"])
+    
+    col1, col2 = st.columns([1,10])
+    col1.button("D")
+    col2.write(question["answer_d"])
+
     # in this case, the button is showed in other section of UI
     if st.session_state.show_explanation == False:
         
-        _, col2, col3 = st.columns([5,3,3])
+        _, col2, col3 = st.columns([1,3,3])
         # col2.button("I don't know", key="btn_dont_know", on_click=on_click_verify_answer, args=["DONT_KNOW"])
         col2.button("I don't know", key="btn_dont_know", )
         # col3.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
