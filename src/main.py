@@ -54,9 +54,21 @@ def load_question():
         # st.session_state.no_more_questions_available = True
         st.session_state.page_flow = FLOW_RESULTS
 
+def on_click_verify_answer(answer):
+    print("----------------- on_click_verify_answer ------------------")
+    question = st.session_state.question    
+    
+    if answer != "DONT_KNOW":
+        if answer == question["answer_correct"]:
+            correct_answer = True
+            
+    else:
+        print("dont know")
+        st.session_state.show_explanation = True
+
 
 def show_question():
-    print("----------------- LOADING show_question ------------------")
+    print("----------------- show_question ------------------")
     question = st.session_state.question
 
     st.write(
@@ -72,27 +84,26 @@ def show_question():
     st.write("")  # Empty string
 
     col1, col2 = st.columns([1,10])
-    col1.button("A")
+    col1.button("A", on_click=on_click_verify_answer, args=["a"])
     col2.write(question["answer_a"])
     
     col1, col2 = st.columns([1,10])
-    col1.button("B")
+    col1.button("B", on_click=on_click_verify_answer, args=["b"])
     col2.write(question["answer_b"])
     
     col1, col2 = st.columns([1,10])
-    col1.button("C")
+    col1.button("C", on_click=on_click_verify_answer, args=["c"])
     col2.write(question["answer_c"])
     
     col1, col2 = st.columns([1,10])
-    col1.button("D")
+    col1.button("D", on_click=on_click_verify_answer, args=["d"])
     col2.write(question["answer_d"])
 
     # in this case, the button is showed in other section of UI
     if st.session_state.show_explanation == False:
         
         _, col2, col3 = st.columns([1,3,3])
-        # col2.button("I don't know", key="btn_dont_know", on_click=on_click_verify_answer, args=["DONT_KNOW"])
-        col2.button("I don't know", key="btn_dont_know", )
+        col2.button("I don't know", key="btn_dont_know", on_click=on_click_verify_answer, args=["DONT_KNOW"])
         # col3.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
         col3.button("Ends session", key="btn_end_session")
 
