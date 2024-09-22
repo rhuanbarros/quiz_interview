@@ -47,10 +47,13 @@ if "answered_correct" not in st.session_state:
     st.session_state.answered_correct = None
 
 if "session_id" not in st.session_state:
-    st.session_state.session_id = str(uuid.uuid4())
+    st.session_state.session_id = None
 
 if "subject_matter_selected" not in st.session_state:
     st.session_state.subject_matter_selected = []
+
+if "level_selected" not in st.session_state:
+    st.session_state.level_selected = []
 
 #############################################
 ############### LISTENERS
@@ -94,10 +97,16 @@ def on_click_start_over_again():
     # st.session_state.use_subject_matter_1_filter = True
     # st.session_state.questions_available = False
 
-def on_click_start(subject_matter_selected, ):
+def on_click_start(subject_matter_selected, level_selected):
     if "All" in subject_matter_selected:
         subject_matter_selected.remove("All")
+    st.session_state.subject_matter_selected = subject_matter_selected
     
+    if "All" in level_selected:
+        level_selected.remove("All")
+    st.session_state.level_selected = level_selected
+    
+    st.session_state.session_id = str(uuid.uuid4())
     st.session_state.page_flow = FLOW_QUESTION
 
 #############################################
@@ -108,17 +117,27 @@ def load_question():
     print("----------------- LOADING QUESTION FUNCTION ------------------")
 
     subject_matter_selected = st.session_state.subject_matter_selected
+    level_selected = st.session_state.level_selected
 
-    if len(subject_matter_selected) == 0:
-        response = supabase.table("get_question").select("*").execute()
-    else:
-        query = supabase.table("get_question").select("*")
-        for item in subject_matter_selected:
-            query = query.eq("subject_matter", item)
+    query = supabase.table("get_question").select("*")
 
-        response = query.execute()        
+    # print("subject_matter_selected")
+    # print(subject_matter_selected)
+
+    for item in subject_matter_selected:
+        query = query.eq("subject_matter", item)
+    
+    # print("level_selected")
+    # print(level_selected)
+    for item in level_selected:
+        query = query.eq("level", item)
+
+    response = query.limit(1).execute()
+
+    print(response)
     
     qty = len(response.data)
+    print(qty)
 
     if qty > 0:
         st.session_state.question = response.data[0]
@@ -138,6 +157,15 @@ def get_subject_matter():
     
     return data_list
 
+@st.cache_resource
+def get_level():
+    response = supabase.table('get_level').select("*").execute()
+    data_list = ["All"]
+    for row in response.data:
+        data_list.append(row["level"])
+    
+    return data_list
+
 
 #############################################
 ############### WIDGETS
@@ -149,16 +177,10 @@ def show_config_train():
         #### Configuration
         """
     )
-    subject_matter_list_selected = st.multiselect("Subject matter", get_subject_matter(), ["All"])
+    subject_matter_selected = st.multiselect("Subject matter", get_subject_matter(), ["All"])
+    get_level_selected = st.multiselect("Level", get_level(), ["All"])
     
-    st.button("Start!", on_click=on_click_start, args=[subject_matter_list_selected])
-
-    # _, col2, col3, _ = st.columns([5,7,7,5])
-    # col2.button("Start!", on_click=on_click_start, args=[subject_matter_1s_list_selected])
-    # col2.button("Start! (Restart questions if necessary)", on_click=on_click_start_restart, args=[subject_matter_1s_list_selected])
-    # col2.button("Start Subject matter 1", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, True])
-    # col3.button("Start Topic description", on_click=on_click_start, args=[subject_matter_1s_list_selected, topic_descriptions_list_selected, False])
-
+    st.button("Start!", on_click=on_click_start, args=[subject_matter_selected, get_level_selected])
 
 def show_question():
     print("----------------- show_question ------------------")
@@ -199,7 +221,6 @@ def show_question():
         col2.button("I don't know", key="btn_dont_know",
                     on_click=on_click_verify_answer, args=["DONT_KNOW"])
         col3.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
-        # col3.button("Ends session", key="btn_end_session")
 
 
 def show_explanation():
@@ -263,10 +284,13 @@ match st.session_state.page_flow:
             st.session_state.first_run = False
             load_question()
 
-        show_question()
+        if st.session_state.page_flow == 2: # FLOW_RESULTS
+            show_results()
+        else:
+            show_question()
 
-        if st.session_state.show_explanation:
-            show_explanation()
+            if st.session_state.show_explanation:
+                show_explanation()
 
     case 2: # FLOW_RESULTS
         show_results()
