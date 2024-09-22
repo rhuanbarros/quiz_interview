@@ -324,17 +324,9 @@ st.write(
 
 match st.session_state.page_flow:
     case 0: # FLOW_CONFIGURATION
-        # supabase.table('question_filters').delete().gt('id', 0).execute()
         show_config_train()
 
     case 1:  # FLOW_QUESTION
-        # if st.session_state.first_run:
-        #     st.session_state.first_run = False
-        #     load_question()
-
-        # if st.session_state.page_flow == 2: # FLOW_RESULTS
-        #     show_results()
-        # else:
         show_question()
 
         if st.session_state.show_explanation:
