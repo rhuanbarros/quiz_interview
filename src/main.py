@@ -121,6 +121,40 @@ def show_question():
         col3.button("Ends session", key="btn_end_session")
 
 
+def show_explanation():
+    st.write("")  # Empty string
+    
+    if st.session_state.answered_correct != None:
+        if st.session_state.answered_correct:
+            st.success("Correct answer!")
+        else:
+            st.error("Wrong answer!")
+        
+    explanation = st.session_state.question["explanation"]
+    
+    st.write("")  # Empty string
+    st.write("")  # Empty string
+    st.write(
+        rf"""
+        #### Explanation
+        """
+    )
+
+    st.info(f'{explanation}', icon="ℹ️")
+    
+    st.write("")  # Empty string
+    st.write("")  # Empty string
+    
+    _, col2, col3, col4, _ = st.columns([5,7,14,7,5])
+    
+    # col2.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
+    
+    # col3.button("Elaborate more the explanation", on_click=on_click_elaborate_more_the_explanation)
+    
+    # col4.button("Next", on_click=on_click_next)
+    col4.button("Next")
+
+
 match st.session_state.page_flow:
     # case 0: # FLOW_CONFIGURATION
     #     supabase.table('question_filters').delete().gt('id', 0).execute()
@@ -133,8 +167,8 @@ match st.session_state.page_flow:
 
         show_question()
 
-        # if st.session_state.show_explanation:
-        #     show_explanation()
+        if st.session_state.show_explanation:
+            show_explanation()
 
     # case 2: # FLOW_RESULTS
     #     show_results()
