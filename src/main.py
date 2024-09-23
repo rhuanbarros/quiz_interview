@@ -168,12 +168,20 @@ def load_question():
     for item in level_selected:
         query = query.eq("level", item)
 
-    response = query.neq("session_id", st.session_state.session_id).limit(1).execute()
+    # response = query.limit(1).execute()
+    response = query.execute()
+    session_id = st.session_state.session_id
 
-    print(response)
+    # I couldn't get to construct a query using supabase python
+    # the query would be question.session_id is null or question.session_id != session_id
+    # I coudl get the 'or' to work. I tried in the labs.
+    filtered = [ row for row in response.data if row['session_id'] != session_id ]
+
+    print(filtered)
     
-    qty = len(response.data)
-    print(qty)
+    # qty = len(response.data)
+    qty = len(filtered)
+    # print(qty)
 
     if qty > 0:
         st.session_state.question = response.data[0]
