@@ -168,7 +168,7 @@ def load_question():
     for item in level_selected:
         query = query.eq("level", item)
 
-    response = query.limit(1).execute()
+    response = query.neq("session_id", st.session_state.session_id).limit(1).execute()
 
     print(response)
     
