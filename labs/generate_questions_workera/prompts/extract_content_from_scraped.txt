@@ -1,0 +1,43 @@
+I scraped some conten from a website, I just copy and paste. I need to extract some information from it. 
+I will show you an  example of what I want to extract, later I will give you the whole contente copied to apply the extraction task.
+
+The extraction task is to get a list of topics like in the example.
+
+The output format should be markdown code.
+
+# EXAMPLE CONTENT 
+
+Probability & Statistics
+
+Metrics and Model Diagnostics
+topic
+Confusion Matrix
+
+Undetermined
+Learning content
+
+Upskilling is an enterprise feature. Find out more information and get access by upgrading.
+Learn more
+3 Skills
+
+Calculate different metrics to measure the validity of the model
+
+Examine the types of errors in confusion matrices
+
+Describe the cells of a confusion matrix
+
+---------------------------------------------
+
+# EXAMPLE CONTENT EXTRACTED
+
+- Probability & Statistics
+    - Metrics and Model Diagnostics
+        - Confusion Matrix
+            - Calculate different metrics to measure the validity of the model
+            - Examine the types of errors in confusion matrices 
+            - Describe the cells of a confusion matrix
+
+
+# ACTUAL CONTENT TO APPLY THE EXTRACTION task
+
+

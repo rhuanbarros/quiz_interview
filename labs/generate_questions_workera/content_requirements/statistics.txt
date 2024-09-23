@@ -1,0 +1,160 @@
+
+
+Probability & Statistics
+
+Statistical Theory
+topic
+Statistical Methods
+
+Undetermined
+Learning content
+
+Upskilling is an enterprise feature. Find out more information and get access by upgrading.
+Learn more
+6 Skills
+
+Interpret the results of ANOVA
+
+Illustrate the methods to detect outliers
+
+Use permutations to calculate probability
+
+Describe the Central Limit Theorem (CLT)
+
+Perform a Chi-square test of frequencies
+
+Summarize the process of executing Monte Carlo Simulation
+
+
+---------------------------------------------
+
+
+Probability & Statistics
+
+Statistical Theory
+topic
+Statistical Modeling
+
+Undetermined
+Learning content
+
+Upskilling is an enterprise feature. Find out more information and get access by upgrading.
+Learn more
+8 Skills
+
+Conduct general linear modeling
+
+Describe multilevel modeling
+
+Conduct generalized linear modeling
+
+Conduct multivariate modeling
+
+Describe non-parametric modeling
+
+Summarize the properties of a latent variable
+
+Analyze the bias/variance trade-off
+
+Perform univariate modeling
+
+---------------------------------------------
+
+
+Probability & Statistics
+
+Statistical Theory
+topic
+Statistical Parameters
+
+Undetermined
+Learning content
+
+Upskilling is an enterprise feature. Find out more information and get access by upgrading.
+Learn more
+6 Skills
+
+Calculate the mode of a random variable
+
+Calculate the covariance between two continuous variables
+
+Compute the variance of a random variable
+
+Calculate the correlation between two variables
+
+Calculate the mean of a random variable
+
+Determine the median
+
+---------------------------------------------
+
+
+Probability & Statistics
+
+Statistical Theory
+topic
+Hypothesis Testing
+
+Undetermined
+Learning content
+
+Upskilling is an enterprise feature. Find out more information and get access by upgrading.
+Learn more
+8 Skills
+
+Differentiate between right-tailed and left-tailed hypothesis testing
+
+Interpret confidence interval for a sample
+
+Demonstrate one-tailed hypothesis testing
+
+Conduct a Z test
+
+Describe the one-sample and two-sample T-test
+
+Calculate the p-value
+
+Describe two-tailed hypothesis testing
+
+Measure accuracy of hypothesis using mean deviation error
+
+
+---------------------------------------------
+
+
+Probability & Statistics
+
+Statistical Theory
+topic
+Statistical Sampling
+
+Undetermined
+Learning content
+
+Upskilling is an enterprise feature. Find out more information and get access by upgrading.
+Learn more
+2 Skills
+
+Use the different types of sampling techniques
+
+Indicate the steps involved in sampling
+
+---------------------------------------------
+
+---------------------------------------------
+
+---------------------------------------------
+
+---------------------------------------------
+
+---------------------------------------------
+
+---------------------------------------------
+
+---------------------------------------------
+
+---------------------------------------------
+
+---------------------------------------------
+
+

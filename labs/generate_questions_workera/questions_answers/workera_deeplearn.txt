@@ -1,0 +1,770 @@
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 1 of 19
+
+You have a dataset as a numpy-array X. It contains mmmm training examples, and each training example has nnn features.
+
+m,n = X.shape
+
+You'd like to split the data into kkmini-batches of size 64 (the last mini-batch could have size less than 64). Which of the following codes is the correct one to compute the total number of mini-batches (in one epoch)?
+
+    num_minibatches = np.floor(m/64)
+    num_minibatches = np.ceil(m/64)
+    num_minibatches = np.floor(n/64)
+    num_minibatches = np.ceil(n/64)
+    I don't know yet
+
+How would you rate this assessment question?
+Question 1 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+You've chosen the correct answer because `np.ceil(m/64)` is the right way to determine the number of mini-batches when dividing the total number of training examples, `m`, by the mini-batch size, which is 64 in this case. The `np.ceil` function rounds up to the nearest whole number, ensuring that you account for all training examples. If you used `np.floor`, it would round down, potentially leaving out some examples in the last batch if the total number is not a multiple of 64. By using `np.ceil`, you make sure to include a mini-batch for the remaining examples, even if it's smaller than 64. Remember, in deep learning, it's crucial to use all the available data for training, so accounting for every example in the batches is important for the learning process.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 2 of 19
+
+A deep learning engineer would like to shrink a volume of shape (32, 32, 256) into a volume of shape (32, 32, 64).
+
+
+Which of the following layers should the engineer use?
+
+Note: The shapes are in the [height, width, channels] format. The engineer will not use any padding.
+
+    A pooling layer
+    A 1x1 convolutional layer
+    A fully connected layer
+    A 4x4 convolutional layer
+    A 3x3 convolutional layer
+    I don't know yet
+
+How would you rate this assessment question?
+Question 2 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+The option you chose, a 4x4 convolutional layer, is not the correct choice in this scenario primarily because the size of the convolutional filter (4x4) does not directly correlate with reducing the number of channels in the volume. Convolutional layers generally are used to extract features from the input volume, and the depth of the output volume is determined by the number of filters used, not the size of each filter. Using a 4x4 filter would still produce an output volume with the same depth as the input volume if the number of filters is equal to the input depth.
+
+Correct answer
+
+The correct answer is a 1x1 convolutional layer. This type of layer is often used in deep learning architectures to reduce the dimensionality of the volume along the channel axis while keeping the height and width unchanged. By applying 1x1 convolutions with 64 filters, the number of output channels is effectively reduced from 256 to 64, achieving the desired shape of (32, 32, 64). This layer acts like a fully connected layer applied to each pixel's set of channels, allowing for a combination of channel information while maintaining spatial dimensions.
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 3 of 19
+
+Consider the following figure:
+
+
+In the figure above, the blue bounding box is the ground truth and the green bounding box (of the same width and height) is predicted.
+
+
+Which is reasonable about the value of the Intersection over Union (IoU) metric in this case?
+
+    IoU < 0.45
+
+    0.45 < IoU < 0.55
+
+    0.55 < IoU
+
+    IoU = 0
+
+    IoU = 1
+    I don't know yet
+
+How would you rate this assessment question?
+Question 3 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+A personalized explanation is not available for this question
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 4 of 19
+
+Which of the following applications would be built using a Bi-directional RNN rather than a simple RNN? (Select all that apply)
+
+    Live-translation earphone devices
+    Real-time robot path planning
+    Machine translation
+    Video classification
+    Online object tracking
+    I don't know yet
+
+How would you rate this assessment question?
+Question 4 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you got right
+
+The correct answers are Machine Translation and Video Classification because both applications benefit from the ability to process sequential input data in both forward and backward directions. In machine translation, understanding the context before and after a given word or phrase is crucial to accurately translating between languages. A Bi-directional RNN can take into account the entire sentence structure, which can greatly enhance the quality of the translation. Similarly, for video classification, the context provided by frames that come both before and after the current frame is important for accurately recognizing and classifying actions or events in a video. By processing the video sequence in both directions, a Bi-directional RNN can capture temporal dependencies that a simple RNN might miss. This leads to more accurate and context-aware predictions in these complex tasks.
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 5 of 19
+A deep learning engineer is developing a leaf disease prediction model with a pre-trained model. The engineer's training dataset is tiny and pretty different from the dataset on which the pre-trained model was trained on.
+
+Which of the following should the engineer do to get a model that is suited to the data?
+
+    Keep only the pre-trained model's first few layers, add a layer, and fine-tune the whole network.
+    Replace the pre-trained model's last layer and fine-tune the previous layer only.
+    Replace the pre-trained model's last layer and fine-tune the whole network.
+    Keep only the pre-trained model's first few layers, add a layer, and fine-tune only the last layer.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 5 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+The option you chose suggests replacing the pre-trained model's last layer and fine-tuning the entire network. This approach can be challenging when the dataset is small and significantly different from the one used for the initial training of the model. Fine-tuning the entire network might lead to overfitting because the model has too many parameters to adjust relative to the amount of available data. Additionally, layers deeper in the network tend to learn more specific features that might not be relevant to the new dataset.
+
+Correct answer
+
+The correct answer, option 4, involves keeping only the first few layers of the pre-trained model and adding a new layer, but crucially, only fine-tuning the last layer. This approach is effective because the initial layers of a neural network generally capture universal features like edges and textures that are useful across different tasks, while the complexity and specificity increase in deeper layers. By not fine-tuning the initial layers, you avoid overfitting, making this method well-suited for a small, distinct dataset.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 6 of 19
+
+During forward propagation, a ReLU activation receives an input:
+
+
+During backpropagation, the value of the gradient which is about to be backpropagated through the ReLU is:
+
+The input matrix `x` is:
+
+\[
+x = \begin{pmatrix}
+1 & -2 & 3 \\
+3 & 2 & -4 \\
+-12 & 9 & 8
+\end{pmatrix}
+\]
+
+What will be the value of the backpropagated gradient after backpropagating through the ReLU?
+
+    \[
+G_{\text{backprop}} = \begin{pmatrix}
+5 & 0 & 1 \\
+2 & 3 & 0 \\
+0 & -3 & 4
+\end{pmatrix}
+\]
+
+
+
+    I don't know yet
+
+How would you rate this assessment question?
+Question 6 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+A personalized explanation is not available for this question
+
+
+Explanation:
+
+### Backpropagation Through ReLU
+
+The question asks for the backpropagated gradient after passing through a ReLU activation. Here's a breakdown of how ReLU behaves during backpropagation:
+
+#### ReLU Forward Pass:
+ReLU sets all negative values in the input matrix `x` to 0, while keeping positive values unchanged.
+
+The input matrix `x` is:
+
+\[
+x = \begin{pmatrix}
+1 & -2 & 3 \\
+3 & 2 & -4 \\
+-12 & 9 & 8
+\end{pmatrix}
+\]
+
+For ReLU, any negative values in `x` will have gradients of 0 during backpropagation. The input matrix `x` after applying ReLU will be:
+
+\[
+x_{\text{ReLU}} = \begin{pmatrix}
+1 & 0 & 3 \\
+3 & 2 & 0 \\
+0 & 9 & 8
+\end{pmatrix}
+\]
+
+#### Backpropagation through ReLU:
+For backpropagation, the gradient `G` is only passed through the positions where `x` was positive. Wherever `x` was negative (or zero after ReLU), the gradient will be set to 0.
+
+Given the gradient matrix `G`:
+
+\[
+G = \begin{pmatrix}
+5 & 3 & 1 \\
+2 & 3 & -1 \\
+-2 & -3 & 4
+\end{pmatrix}
+\]
+
+The backpropagated gradient after ReLU will be:
+- If `x[i, j] > 0`, `G[i, j]` stays the same.
+- If `x[i, j] \leq 0`, `G[i, j]` becomes 0.
+
+Thus, applying this rule gives the new gradient:
+
+\[
+G_{\text{backprop}} = \begin{pmatrix}
+5 & 0 & 1 \\
+2 & 3 & 0 \\
+0 & -3 & 4
+\end{pmatrix}
+\]
+
+This corresponds to the correct answer.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 7 of 19
+
+You want to initialize the parameters of a fully-connected layer with a Gaussian random initialization of mean 0 and variance of 25.
+
+Which of the following commands achieves this?
+
+    init = np.random.uniform()
+
+    init = 25*init
+
+    init = np.random.randn()
+
+    init = 5*init
+
+    init = np.random.uniform()
+
+    init = 5*init
+
+    init = np.random.randn()
+
+    init = 25*init
+    I don't know yet
+
+How would you rate this assessment question?
+Question 7 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+The option you chose suggests multiplying the standard normal distribution generated by `np.random.randn()` by 25. This would result in a distribution with a standard deviation of 25, not the variance of 25. Variance is the square of the standard deviation, so to achieve a variance of 25, you need a standard deviation of 5, which is why multiplying by 25 is incorrect.
+
+Correct answer
+
+The correct answer involves using `np.random.randn()` which generates samples from a standard normal distribution with a mean of 0 and a standard deviation of 1. To adjust this to a variance of 25, you need to multiply by the standard deviation that corresponds to that variance, which is 5 (since 5^2=25). This is why multiplying by 5 gives the desired initialization. It's important to remember the relationship between variance and standard deviation when working with Gaussian distributions.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 8 of 19
+
+A deep learning researcher's machine has enough RAM to train neural networks.
+
+
+Compared to using Stochastic Gradient Descent for optimization, choosing a batch size that fits the researcher's RAM will lead to:
+
+    a less precise and slower update.
+    a more precise but slower update.
+    a more precise and faster update.
+    a less precise but faster update.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 8 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+The option you selected suggests using a larger batch size would result in less precise but faster updates. This is a common misunderstanding. In reality, larger batch sizes allow for more accurate gradient estimates because they are calculated over more data points. However, they also require more computational resources and time for each update because the entire batch must be processed before the model is updated. Therefore, while the updates might be more precise, they are not necessarily faster due to the increased computational load.
+
+Correct answer
+
+The correct answer is that choosing a batch size that fits the researcher's RAM will lead to a more precise but slower update. This is because larger batch sizes provide a more accurate estimate of the gradient by averaging the loss over more examples, which tends to result in more stable and reliable updates to the model's weights. However, these calculations are more resource-intensive and take longer to compute, hence the updates are slower. The trade-off is between the precision of the gradient estimate and the time it takes to compute this estimate.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 9 of 19
+
+An engineer is tasked with optimizing the learning rate and batch size of a deep learning model for an online streaming platform's recommendation system and takes into consideration different hyperparameter optimization techniques, including manual search, random search, Bayesian optimization, and grid search. The system must adapt quickly to changing user preferences and operate efficiently, despite fluctuations in the volume of concurrent users, which varies the system's available computational resources.
+
+Given the need for rapid adaptation to user behavior and limited computational resources during peak times, which hyperparameter optimization technique would be MOST appropriate for the engineer to use to optimize the model?
+
+    Your Answer
+
+How would you rate this assessment question?
+Question 9 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you missed
+
+A correct response should choose Bayesian optimization as the most suitable technique given the need for rapid adaptation to user behavior and limited computational resources during peak times. The response does not provide any answer, thus failing to address the scenario's requirements or demonstrate understanding of the optimization techniques.
+
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 10 of 19
+
+Consider a neural network trained to classify images of animals (one class per image). The Loss LL is used during training. The dataset consists of (image, labels) pairs denoted (x,y)(x,y). What is the meaning of ∂L∂x∂x
+∂L​?
+
+    It quantifies the influence of the image's pixels on the loss function's value.
+    It quantifies the influence of the choice of the loss function on the image's pixels' values.
+    It quantifies the influence of the first hidden layer of the model on the loss function's value.
+    It quantifies the influence of the choice of the loss function on the first hidden layer's activation.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 10 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+The notation ∂L/∂x represents the partial derivative of the loss function L with respect to the input x, which in this case is the image's pixels. This derivative measures how small changes in the input pixels would affect the change in the loss function's value. Essentially, it indicates the sensitivity of the loss function to the input image. This is a fundamental concept in deep learning, as it guides the optimization process during training by showing what adjustments to make to the input pixels to minimize the loss and improve the model's performance. That's why the statement that it quantifies the influence of the image's pixels on the loss function's value is correct. Understanding this concept is crucial for grasping how neural networks learn from data.
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 11 of 19
+
+A deep learning engineer is designing a fully connected neural network for a classification task. The network comprises an input layer with 20 neurons, two hidden layers, each with 50 neurons, and an output layer with 5 neurons.
+
+Assuming each layer is fully connected to the next and includes bias terms for each neuron in the hidden and output layers, what is the total number of parameters in this neural network?
+
+    Your Answer
+    3805
+
+How would you rate this assessment question?
+Question 11 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you missed
+
+The correct total number of parameters in the neural network design should be 3855. The answer provided is 3805, which is not accurate and thus does not meet the criteria for a correct response.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 12 of 19
+
+A deep learning engineer is building a fully connected network to classify all animals on images taken in a zoo. If bears and iguanas are in the image, the network should classify the image as containing two classes: “bear” and “iguana”, no matter how many animals are from each class.
+
+
+Which of the following is a good choice for the last activation of the neural network?
+
+    Tanh
+    ReLU
+    Sigmoid
+    Softmax
+    I don't know yet
+
+How would you rate this assessment question?
+Question 12 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+The option you selected, Softmax, is typically used for multi-class classification problems where each instance is assigned to one, and only one, class. However, in the scenario described, the network needs to handle multiple labels per image, as there can be both a bear and an iguana present. Softmax would not be appropriate because it would force the probabilities of all classes to sum up to one, thus making it impossible to assign high probabilities to multiple classes simultaneously.
+
+Correct answer
+
+The correct answer is Sigmoid. The Sigmoid function is suitable for multi-label classification problems, like the one described. It outputs a probability value from 0 to 1 for each class independently. This allows the network to predict multiple classes at the same time. For example, if both a bear and an iguana are present in the image, the network can output high probabilities for both the "bear" and "iguana" classes independently.
+
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 13 of 19
+
+In order to back-propagate through a max-pooling layer, it is required to pass at least the information about the positions of the max values from the forward pass.
+
+    False
+    True
+    I don't know yet
+
+How would you rate this assessment question?
+Question 13 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+You selected "I don't know yet" or didn't select an option.
+
+Correct answer
+
+In a max-pooling layer, during the forward pass, the layer selects the maximum value from each of the pooling regions as its output. However, during the backward pass (when we are back-propagating the error), it is crucial to know which inputs influenced the output to correctly distribute the gradients. Therefore, the positions of these maximum values must be remembered, as only these positions receive the gradients (error signals) from the layer above, while other positions in the region get a gradient of zero. This selective back-propagation helps in updating the correct weights and biases during the training of the neural network.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 14 of 19
+
+What is the result of applying max pooling to the following input, using a filter size of 2 and a stride of 2?
+
+
+2
+	
+
+1
+	
+
+3
+	
+
+5
+
+8
+	
+
+1
+	
+
+0
+	
+
+2
+
+4
+	
+
+7
+	
+
+3
+	
+
+1
+
+4
+	
+
+3
+	
+
+0
+	
+
+9
+
+    8
+    	
+
+    5
+
+    7
+    	
+
+    9
+
+    12
+    	
+
+    10
+
+    18
+    	
+
+    13
+
+    11
+    	
+
+    11
+
+    15
+    	
+
+    16
+
+    3
+    	
+
+    2.5
+
+    4.5
+    	
+
+    3.2
+    I don't know yet
+
+How would you rate this assessment question?
+Question 14 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+Max pooling is an operation in deep learning that helps to reduce the dimensionality of the input and retain the most significant features. When a filter of size 2x2 is applied with a stride of 2, it means that we look at non-overlapping 2x2 regions and select the maximum value from each region. For the given input matrix, when you apply max pooling with these parameters, you correctly identified that the top-left 2x2 region has a maximum value of 8, the top-right 2x2 region has a maximum value of 5, the bottom-left 2x2 region has a maximum value of 7, and the bottom-right 2x2 region has a maximum value of 9. These values form a 2x2 output matrix after max pooling is applied. This process effectively captures the highest values in each region of the input matrix, which is key for feature detection in deep learning.
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 15 of 19
+
+Text sequence tagging is the task to output a class (or "tag") for each word of an input text sequence. For instance, the input "I want to go to Burkina Faso" can result in the following prediction: "O O O O O B-LOC I-LOC" where O indicates that the word is not a location, B-LOC (res. I-LOC) indicates that the word is the beginning (resp. inside) word of a location.
+
+You are discussing three possible approaches with your teammates: Fully-Connected Neural Networks (FCNN), Recurrent Neural Networks (RNN) and 1-D Convolutional Neural Networks (CNN).
+
+Which of the following is FALSE?
+
+    During training, CNN will probably be faster than the RNN because it can process the input sequence in parallel.
+    If you are using GPUs, the CNN will probably be faster than the RNN because GPUs optimize convolution operations.
+    If the window size of the CNN is small (let's say 3), the FCNN will likely perform better than the CNN on long sequences such as "I am not sure I am available this summer, but I hope I could go to Venezuela".
+    At test time, the CNN will probably be faster than the RNN because it can process the input sequence in parallel.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 15 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+You've identified the incorrect statement accurately. The statement that the FCNN will likely perform better than the CNN on long sequences if the CNN uses a small window size is false. In reality, a 1-D CNN with a small window size can still capture local patterns effectively, and this can be beneficial even in long sequences. The key is that CNNs can recognize patterns regardless of where they appear in the input sequence, thanks to their shared weights and translation invariance properties. Moreover, fully-connected networks don't inherently capture the sequential nature of the data, making them less suitable for sequence tagging tasks compared to CNNs, which can capture local dependencies within a specified window size. Your understanding of the comparative performance of these neural network architectures in processing sequences is on point.
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 16 of 19
+
+Which of the following is a reason for padding an input when performing a convolution?
+
+    To avoid overfitting to the data.
+
+    To shrink the width and height.
+
+    To guarantee translation invariance.
+
+    To avoid shrinking the width and height.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 16 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+The reason for padding an input in a convolutional operation is to control the spatial dimensions of the output. Without padding, each convolution would reduce the size of the output compared to the input, which can be undesirable, especially in deep networks where many convolutions are applied. By adding padding, we can preserve the width and height of the input, allowing for more layers without diminishing the size of the feature maps too quickly. This is important for maintaining the spatial resolution of the image throughout the layers of the network, which can be crucial for tasks like image segmentation where pixel-level accuracy is required. Padding does not directly affect overfitting or translation invariance, nor is it meant to shrink the dimensions of the image.
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 17 of 19
+
+Consider a simple convolutional neural network with one convolutional layer.
+
+
+Which of the following statements is true about this network?
+
+    It is scale invariant.
+    It is rotation invariant.
+    It is translation invariant.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 17 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+You selected "I don't know yet" or didn't select an option.
+
+Correct answer
+
+The correct answer is that the simple convolutional neural network with one convolutional layer is translation invariant. Translation invariance means that the network can recognize objects in an image no matter where they are located. This property is inherent in convolutional neural networks (CNNs) because the convolution operation followed by pooling (like max pooling) allows the network to detect features in different regions of the input image similarly. However, CNNs are not inherently scale invariant or rotation invariant. Scale invariance would mean that the network can recognize objects regardless of their size, and rotation invariance would mean that the network can recognize objects no matter how they are rotated. These properties are not guaranteed in a simple CNN because the filters learned during training are specific to the scale and orientation of the patterns in the training data. To achieve scale or rotation invariance, additional techniques such as data augmentation or specialized network architectures would need to be used. Data augmentation can include scaling and rotating the training images so that the network is exposed to various scales and orientations during training. Specialized architectures might involve modules that are designed to be more robust to scale and rotation changes. Understanding these properties of CNNs is essential for designing networks that perform well on a given task. Remember, the key advantage of CNNs is their ability to handle spatial hierarchies in images due to translation invariance, but achieving invariance to other transformations often requires extra steps.
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 18 of 19
+
+Convolutional layers use weight sharing to capture visual patterns on images without using too many parameters.
+
+Which of the following statements is TRUE about weight sharing?
+
+    It increases variance.
+    It increases both bias and variance.
+    It increases bias.
+    None of the above.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 18 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+You selected "I don't know yet" or didn't select an option.
+
+Correct answer
+
+Let's discuss weight sharing in convolutional layers. Weight sharing is a technique used in convolutional neural networks (CNNs), where the same weights are used by all neurons in a particular convolutional layer for different positions of the input. This means that the same filter (set of weights) is slid or convolved across the entire input image to detect patterns such as edges, corners, or specific textures. The idea behind weight sharing is that once a feature is learned at one location in the image, it can be applied to other locations, assuming that the same feature can be of interest in those locations as well. This reduces the number of parameters significantly compared to a fully connected layer, where each connection would have its own weight. This reduction in parameters helps to limit overfitting, which is when a model learns the training data too well, including the noise, and performs poorly on unseen data. Therefore, weight sharing tends to increase bias slightly because the model is constrained to use the same features everywhere, possibly leading it to miss localized patterns that a more flexible model might capture. However, it decreases variance because the model is less likely to fit to random noise in the training data. By focusing on the most significant patterns that are present throughout the image, the network generalizes better. So, the correct statement about weight sharing is that it increases bias. It does not increase variance, as weight sharing is a form of regularization that makes the model simpler and less prone to overfitting. Hence, the correct answer is option 3: It increases bias.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Deep Learning
+
+Question 19 of 19
+
+A convolutional layer in a neural network has an input volume of shape 32x32x1 (height x width x depth) and three filters of shape 3x3x1 each.
+
+
+How many learnable parameters does this layer have (including all biases)?
+
+    28
+
+    54
+
+    27
+
+    30
+    I don't know yet
+
+How would you rate this assessment question?
+Question 19 of 19
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+You selected "I don't know yet" or didn't select an option.
+
+Correct answer
+
+Let’s break down the calculation for the learnable parameters. Each filter in a convolutional layer has a shape of 3x3x1, meaning there are 9 parameters per filter. Since there are three filters, the total number of parameters from the filters is 3 * 9 = 27. Additionally, each filter has its own bias term, adding one parameter per filter. Thus, there are 3 biases for the three filters. Adding the biases, we get 27 (from the weights) + 3 (from the biases) = 30 parameters in total. The correct answer is 30, which corresponds to option 4.
+
+
+

@@ -1,0 +1,67 @@
+I'm studying Machine Learning and need help to create a comprehensive list of topics and concepts to revise my study.
+I already have a list of topics of the content that will be present in my final exam of my university with the learning goals for each topic.
+
+I need you to work like a experienced teacher that knows everything about machine learning.
+
+Your task is to expand the topic list with new sub-sections.
+
+I want to create a type of summary that capture the main concepts about each topic.
+The content should be comprehensive and show all the content that I should know. You should write important concepts and should explain briefly each topic. 
+I will use it to revise to study.
+
+for each group of topics of related subjects I want you to create a new topic with sub-itens called "Similarities" and other "Differences". 
+In each one you should write the most important concepts that are similar and differents of the group that I should be aware of in the test like a summary.
+
+# Output format:
+You should output markdown code so I can copy it.
+
+
+# LIST OF TOPICS TO expand
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+I want to create a list of topics using bulet list about a area of knowledge that I will give in the end of this prompt.
+This list should be very exaustive and should contain a lot of sub itens in order to list the subtopics in depth.
+I want to use this list to guide me in my study about this topic.
+You should write items that cover element from the level begginer to item to the level advanced.
+
+TOPIC: Linear Algebra
+	
+	
+TOPIC: Supervised Machine Learning
+
+
+---------------
+
+I want to create a type of summary that capture the main topics and concepts about a area of study. 
+I will use it to revise to study.
+The content should be comprehensive and show all the content that I should know. You should write important concepts and should explain briefly each topic. 
+I want you to start from a larger topic and get into depth in the subject and topics about each subject matter and expose all the contents that I should know/study/remeber.
+I want you to create numbered list with a lot of sublevels of numbered list. You should numerate until the last leaf because I want to use the numbers to find each topic later by using the numbers, example: a topic could be at sublevel 1.2.4.5.2.4.8. 
+You could use as many levels as you want.
+
+I will give you a list of topics to use as base of start. You should expand it in its sublevels.
+I know that the list has - (hifens) but you should substitute with the numbered list.
+
+
+TOPICS BELOW:
+
+
+
+----
+
+using the created list, you should create another sublevel for each one and write a paragraph from 3 to 4 lines  exaplaining the topic. you could use basic formules to show the topic better.
+you should extriclty mantain the list as is AND put another sublevel with the paragraph explanation.
+

@@ -1,0 +1,425 @@
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 1 of 10
+
+Consider the following scatter plot of two independent variables x and y: 
+
+
+Which of the following methods is MOST appropriate for finding the correlation between x and y?
+
+    Chi-Squared test
+
+    Fisher correlation coefficient
+
+    Pearson’s correlation analysis
+
+    Spearman’s rank correlation analysis
+    I don't know yet
+
+How would you rate this assessment question?
+Question 1 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+A personalized explanation is not available for this question
+
+Explanation
+The correct answer to the question is Spearman's rank correlation analysis (which you selected).
+
+Here's why:
+
+Pearson's correlation analysis measures the linear relationship between two variables. In the scatter plot shown, the relationship between x and y appears to be non-linear (likely a quadratic or exponential relationship).
+
+Spearman's rank correlation analysis is a non-parametric measure that assesses how well the relationship between two variables can be described by a monotonic function (whether increasing or decreasing). It is more appropriate when the relationship is non-linear, as in this case.
+
+The Chi-Squared test is used for categorical data, and the Fisher correlation coefficient is not typically used for correlation analysis in this context.
+
+
+
+
+
+
+Você disse:
+So, the mais difference between the pearson and spearman that I should know to answer correctly is that the relationship is not linear, so in this case the only option correct would be spearman?
+O ChatGPT disse:
+ChatGPT
+Memória atualizada
+Yes, that's correct! The main difference between Pearson and Spearman correlation is how they handle the relationship between variables:
+
+Pearson's correlation assumes a linear relationship between variables. It measures the strength and direction of a linear association.
+
+Spearman's rank correlation does not assume a linear relationship. It assesses how well the relationship between two variables can be described by a monotonic function (where one variable consistently increases or decreases as the other does, though not necessarily at a constant rate).
+
+In this case, the relationship between x and y in the scatter plot is non-linear but appears monotonic, so Spearman's method is the most appropriate.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 3 of 10
+
+In K-fold cross-validation, which of the following choices for K generally leads to the lowest computational cost?
+
+    K = 2
+
+    K = 10
+    K = int(m/2)
+    K = m (= the number of training examples in your dataset)
+    I don't know yet
+
+How would you rate this assessment question?
+Question 3 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+In K-fold cross-validation, choosing a lower value of K, such as K = 2, generally results in a lower computational cost. This is because the dataset is divided into fewer folds, and each fold is used fewer times as the validation set throughout the cross-validation process. With K = 2, the dataset is split into two parts: one part is used for training and the other for validation. This setup requires fewer training iterations compared to higher values of K, such as K = 10 or K = m, where m is the total number of training examples. Therefore, by choosing K = 2, the process is less computationally intensive as it involves fewer splits and less repetitive training, making it a more efficient choice when computational resources are a concern.
+
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 4 of 10
+
+Which of the following statements about weak and strong learners in a classification algorithm is TRUE?
+
+    Strong learners generalize better to unseen data, whereas weak learners tend to underfit.
+
+    Strong learners usually have lower bias, while weak learners usually have lower variance.
+
+    Strong learners need less data than weak learners.
+
+    Strong learners usually have higher bias while weak learners usually have higher variance.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 4 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+Option 2 is incorrect because strong learners usually have lower bias and higher variance, whereas weak learners tend to have higher bias and lower variance. Bias and variance are crucial concepts in understanding the behavior of different models. Strong learners, with their complexity, can capture the patterns in the data more accurately but may also capture noise, leading to higher variance. Weak learners are simpler and may not capture all the patterns, thus having higher bias but lower variance.
+
+Correct answer
+
+Option 1 is correct because strong learners do generalize better to unseen data, whereas weak learners tend to underfit. Strong learners are typically more complex models that can capture intricate patterns in data, allowing them to perform well on both training and unseen data. In contrast, weak learners are simpler models that may not capture all the patterns in the data, resulting in underfitting and poor generalization to new data.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 5 of 10
+
+A predictive customer churn model was trained primarily using data from users acquired through a specific online marketing campaign, which does not represent the entire customer base.
+
+Which of the following data sampling methods should be used to solve this issue?
+
+    Implement systematic sampling at regular intervals from the customer database.
+
+    Apply stratified sampling to represent customer segments from all acquisition channels proportionally.
+
+    Add a small randomized sample of users from various acquisition channels to the training set.
+
+    Increase the overall sample size by including more users from the same online marketing campaign.
+    I don't know yet
+
+How would you rate this assessment question?
+Question 5 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+The correct answer is using stratified sampling, as it ensures that different segments of the customer base are represented proportionally in the training set. This method is particularly useful when the initial data is biased towards a specific group—in this case, users from a particular online marketing campaign. By applying stratified sampling, you can include customers from various acquisition channels, thus creating a model that better generalizes across the entire customer base. This approach helps in avoiding skewed predictions that favor the initially overrepresented group.
+
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 6 of 10
+
+The product development team is launching new facial recognition software. As an ML engineer, identify potential sources of bias in the training data related to ethnic facial features and describe how you would address these biases to ensure the model's fairness.
+
+    Your Answer
+    A big source of bias would be to create a dataset with just few ethnic groups, like just caucasian and black people. A better way would be to gatther face from a bigger range of ethnics. Also, its is important to address diferrences in a same ethnic, nut from different contries. For example, faces of black people from USA could be different from faces from black people fom Brazil.
+
+    Also, it is important to get the same amount of faces for each of the ethnices so model be trained balanced data
+
+How would you rate this assessment question?
+Question 6 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Answer is partially correct
+
+The response identifies a potential source of bias, specifically the skewed representation of ethnic groups in the dataset. It also suggests a method to address this bias by gathering faces from a broader range of ethnicities and ensuring balanced data representation. However, the explanation lacks technical terminology and comprehensive detail on how to implement these measures effectively, such as using specific algorithms to detect and correct biases.
+
+
+Better answer:
+A potential source of bias in facial recognition models is an unbalanced representation of ethnic groups in the training data. To address this, I would ensure the dataset includes diverse ethnic groups, considering variations within ethnicities across regions. Additionally, I would apply techniques like re-sampling or weighted loss functions to balance underrepresented groups. Bias detection algorithms, such as fairness metrics (e.g., Demographic Parity), could also be employed to monitor and mitigate bias throughout training.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 7 of 10
+
+Consider the following confusion matrix of a machine learning model used in a classification task:
+
+
+
+	
+
+Actual Class
+
+Positive
+	
+
+Negative
+
+Predicted 
+
+Class
+	
+
+Positive
+	
+
+30
+	
+
+12
+
+Negative
+	
+
+8
+	
+
+56
+
+
+Which of the following information regarding the model performance is CORRECT?
+
+    accuracy: 0.833
+
+    precision: 0.815
+
+    sensitivity: 0.789
+
+    misclassification error: 0.126
+    I don't know yet
+
+How would you rate this assessment question?
+Question 7 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+Correct answer
+
+You correctly identified that the sensitivity (also known as recall) of the model is 0.789. Sensitivity measures the proportion of actual positives that are correctly identified as such. In this confusion matrix, there are 30 true positives and 12 false negatives. The sensitivity is calculated as true positives divided by the sum of true positives and false negatives, which is 30 / (30 + 12) = 0.714. It seems there was a mistake in the options provided, but your selection aligns with recognizing the concept of sensitivity correctly.
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 8 of 10
+
+Consider the following scenarios:
+
+
+	
+
+max_depth
+	
+
+Training Error
+	
+
+Validation Error
+
+Scenario 1
+	
+
+3
+	
+
+90
+	
+
+120
+
+Scenario 2
+	
+
+9
+	
+
+45
+	
+
+95
+
+Scenario 3
+	
+
+10
+	
+
+37
+	
+
+167
+
+Scenario 4
+	
+
+4
+	
+
+70
+	
+
+95
+
+Scenario 5
+	
+
+7
+	
+
+50
+	
+
+115
+
+
+Which of the above scenarios is MOST appropriate for gradient boosting?
+
+    Scenario 1
+
+    Scenario 2
+
+    Scenario 3
+
+    Scenario 4
+
+    Scenario 5
+    I don't know yet
+
+How would you rate this assessment question?
+Question 8 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+The selection of Scenario 2 as the most appropriate for gradient boosting was incorrect mainly because the training and validation errors suggest a different pattern of model behavior. In Scenario 2, the training error is relatively low (45), and the validation error is higher (95), indicating potential overfitting with a maximum depth of 9. Gradient boosting generally benefits from scenarios where additional complexity (in this case, deeper trees) could improve performance on both training and validation datasets without leading to significant overfitting.
+
+Correct answer
+
+The correct choice is Scenario 4, and here's why: the training error is moderately high (70), and the validation error is also high (95). This suggests that the model with a max depth of 4 is underfitting, which means it is too simple to capture the underlying patterns in the data effectively. Gradient boosting improves performance by sequentially adding new models that address the residual errors made by existing models, making it particularly suitable for scenarios where increasing model complexity can lead to significant gains in performance.
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 9 of 10
+
+You are preparing a dataset for a health outcome prediction model. The dataset's 'Age' column, critical for the model, is missing 15% of its values. Given that age impacts health outcomes nonlinearly, recommend an appropriate method to impute these missing values, explaining your choice and its impact on model accuracy.
+
+    Your Answer
+    Considering that the 'age' column is considered critical, we should not remove this rows from the dataset.
+    A simple way could be to make the imputation using the mean of this column, but considering that there is other variables, this could not be the best solution.
+    I best solution should be to train a regression classifier to predict the value of the column 'age' of the rows missing this information, so this way we should have a better estimation that takes the others columns.
+
+How would you rate this assessment question?
+Question 9 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you missed
+
+The learner suggested using a regression classifier to predict the missing age values. While this method considers other variables, it does not address the nonlinearity of age impacts on health outcomes as effectively as K-nearest neighbors (KNN) or multiple imputation by chained equations (MICE). The recommended approaches are more suitable for handling nonlinearity, which is critical for maintaining model accuracy.
+
+
+
+
+Accessibility Screen-Reader Guide, Feedback, and Issue Reporting
+
+Workera Logo
+Machine Learning
+
+Question 10 of 10
+
+Complete the following sentence:
+
+
+Ridge regression works well on a dataset with (A)__________ collinearity between features and (B)__________ result in sparse models with low regularization parameter value.
+
+    (A) low, (B) won’t
+
+    (A) high, (B) will
+
+    (A) low, (B) will
+
+    (A) high, (B) won’t
+    I don't know yet
+
+How would you rate this assessment question?
+Question 10 of 10
+Back to Domain Score
+Previous Question
+Next Question
+Explanation
+
+What you selected
+
+You selected "I don't know yet" or didn't select an option.
+
+Correct answer
+
+Ridge regression, also known as Tikhonov regularization, is particularly effective in datasets where there is high collinearity between features because it includes a penalty for large coefficients, which helps to reduce their variance. Unlike Lasso regression, which can produce sparse models (some coefficients exactly zero), Ridge regression does not typically result in sparse models, even with low regularization parameter values. This is why the correct answers are (A) high and (B) won’t.

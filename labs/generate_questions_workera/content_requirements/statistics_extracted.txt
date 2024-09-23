@@ -1,0 +1,37 @@
+- Probability & Statistics
+    - Statistical Theory
+        - Statistical Methods
+            - Interpret the results of ANOVA
+            - Illustrate the methods to detect outliers
+            - Use permutations to calculate probability
+            - Describe the Central Limit Theorem (CLT)
+            - Perform a Chi-square test of frequencies
+            - Summarize the process of executing Monte Carlo Simulation
+        - Statistical Modeling
+            - Conduct general linear modeling
+            - Describe multilevel modeling
+            - Conduct generalized linear modeling
+            - Conduct multivariate modeling
+            - Describe non-parametric modeling
+            - Summarize the properties of a latent variable
+            - Analyze the bias/variance trade-off
+            - Perform univariate modeling
+        - Statistical Parameters
+            - Calculate the mode of a random variable
+            - Calculate the covariance between two continuous variables
+            - Compute the variance of a random variable
+            - Calculate the correlation between two variables
+            - Calculate the mean of a random variable
+            - Determine the median
+        - Hypothesis Testing
+            - Differentiate between right-tailed and left-tailed hypothesis testing
+            - Interpret confidence interval for a sample
+            - Demonstrate one-tailed hypothesis testing
+            - Conduct a Z test
+            - Describe the one-sample and two-sample T-test
+            - Calculate the p-value
+            - Describe two-tailed hypothesis testing
+            - Measure accuracy of hypothesis using mean deviation error
+        - Statistical Sampling
+            - Use the different types of sampling techniques
+            - Indicate the steps involved in sampling

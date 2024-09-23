@@ -1,0 +1,38 @@
+- Probability & Statistics
+    - Metrics and Model Diagnostics
+        - Confusion Matrix
+            - Calculate different metrics to measure the validity of the model
+            - Examine the types of errors in confusion matrices
+            - Describe the cells of a confusion matrix
+        - Residuals
+            - Examine the residuals of the regression line
+            - Analyze a residuals plot
+            - Measure the direction of the vector of residuals
+        - Effect Sizes
+            - Calculate Cohen's d
+            - Calculate R-squared
+            - Calculate area under the ROC curve
+    - Probabilistic Theory
+        - Probabilistic Independence
+            - Identify independent events in probabilities
+            - Compute the probability of a series of n independent events
+        - Generative and Discriminative Models
+            - Describe the features and uses of generative models
+            - Describe the features and uses of discriminative models
+        - Conditional Probabilities
+            - Calculate conditional probabilities using the Bayes rule
+            - Calculate the total probability of events
+        - Probability Distributions
+            - Find a probability using a Bernoulli distribution
+            - Differentiate between different types of distributions
+            - Find a probability using a uniform distribution
+            - Find a probability using a Poisson distribution
+            - Find a probability using a binomial distribution
+            - Find a probability using a normal distribution
+        - Operations on Probabilities
+            - Find the probability of difference and complement
+            - Find the probability of intersection and union
+        - Probability Density Function (PDF)
+            - Calculate mean using a probability density function (PDF)
+            - Calculate a variance using a probability density function (PDF)
+            - Calculate a probability using a density function

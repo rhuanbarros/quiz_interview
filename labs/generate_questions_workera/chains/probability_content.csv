@@ -1,0 +1,831 @@
+,topic_level_1,topic_level_2,topic_level_3,topic_level_4,content
+0,"- Probability & Statistics
+",- Metrics and Model Diagnostics,- Confusion Matrix,- Calculate different metrics to measure the validity of the model,"## Confusion Matrix: Evaluating Model Performance
+
+Here are the main concepts related to using a confusion matrix to evaluate model performance:
+
+**1. Understanding the Confusion Matrix:**
+
+* **True Positives (TP):** Correctly predicted positive cases.
+* **True Negatives (TN):** Correctly predicted negative cases.
+* **False Positives (FP):** Incorrectly predicted positive cases (Type I Error).
+* **False Negatives (FN):** Incorrectly predicted negative cases (Type II Error).
+
+**2. Key Performance Metrics:**
+
+* **Accuracy:** Overall proportion of correct predictions (TP + TN) / (TP + TN + FP + FN).
+* **Precision:** Ability to correctly identify positive cases out of all predicted positives (TP) / (TP + FP).
+* **Recall (Sensitivity):** Ability to identify all actual positive cases (TP) / (TP + FN).
+* **Specificity:** Ability to correctly identify negative cases (TN) / (TN + FP).
+* **F1-Score:** Harmonic mean of precision and recall, balancing both metrics (2 * Precision * Recall) / (Precision + Recall).
+
+**3. Choosing the Right Metric:**
+
+* **Balanced Accuracy:** Average of sensitivity and specificity, useful for imbalanced datasets.
+* **Area Under the Curve (AUC):** Measures the model's ability to distinguish between positive and negative cases across all thresholds.
+* **ROC Curve:** Visual representation of the trade-off between true positive rate and false positive rate at different thresholds.
+
+**4. Applications:**
+
+* **Binary Classification:** Evaluating models that predict two distinct outcomes (e.g., spam/not spam, fraud/not fraud).
+* **Multi-class Classification:** Extending the concept to models predicting multiple classes.
+* **Model Selection:** Comparing different models based on their performance metrics.
+* **Hyperparameter Tuning:** Optimizing model parameters to achieve desired performance.
+
+**5. Limitations:**
+
+* **Imbalanced Datasets:** Metrics like accuracy can be misleading when dealing with imbalanced datasets.
+* **Domain-Specific Considerations:** The choice of metric should align with the specific needs and goals of the application.
+"
+1,"- Probability & Statistics
+",- Metrics and Model Diagnostics,- Confusion Matrix,- Examine the types of errors in confusion matrices,"## Confusion Matrix: Types of Errors
+
+Here's a breakdown of the main concepts related to types of errors in confusion matrices:
+
+**1. Basic Concepts**
+
+* **Confusion Matrix:** A table that summarizes the performance of a classification model by comparing predicted labels to actual labels.
+* **True Positives (TP):** Correctly predicted positive cases.
+* **True Negatives (TN):** Correctly predicted negative cases.
+* **False Positives (FP):** Incorrectly predicted positive cases (Type I error).
+* **False Negatives (FN):** Incorrectly predicted negative cases (Type II error).
+
+**2. Types of Errors**
+
+* **Type I Error (False Positive):**  The model predicts a positive outcome when the actual outcome is negative. 
+    * Example: A spam filter incorrectly flags a legitimate email as spam.
+* **Type II Error (False Negative):** The model predicts a negative outcome when the actual outcome is positive.
+    * Example: A medical test fails to detect a disease that is actually present.
+
+**3. Understanding the Trade-off**
+
+* **Precision:**  The ratio of true positives to the total number of predicted positives (TP / (TP + FP)).  Measures how accurate the positive predictions are.
+* **Recall (Sensitivity):** The ratio of true positives to the total number of actual positives (TP / (TP + FN)). Measures how well the model captures all the positive cases.
+* **Specificity:** The ratio of true negatives to the total number of actual negatives (TN / (TN + FP)). Measures how well the model identifies negative cases.
+* **F1-Score:** The harmonic mean of precision and recall, providing a balanced measure of performance.
+
+**4. Applications**
+
+* **Model Evaluation:** Confusion matrices are essential for evaluating the performance of classification models.
+* **Error Analysis:** Understanding the types of errors helps identify weaknesses in the model and areas for improvement.
+* **Decision Making:** The trade-off between different types of errors can inform decision-making in various applications.
+
+**5. Further Considerations**
+
+* **Imbalanced Datasets:**  In datasets with a significant class imbalance, the confusion matrix can be misleading. 
+* **Cost of Errors:**  The cost associated with different types of errors can influence the choice of model and threshold for classification. 
+"
+2,"- Probability & Statistics
+",- Metrics and Model Diagnostics,- Confusion Matrix,- Describe the cells of a confusion matrix,"## Confusion Matrix
+
+**Concepts:**
+
+* **Definition:** A table that summarizes the performance of a classification model by comparing predicted labels to actual labels.
+* **Cells:**
+    * **True Positives (TP):** Correctly predicted positive instances.
+    * **True Negatives (TN):** Correctly predicted negative instances.
+    * **False Positives (FP):** Incorrectly predicted positive instances (Type I error).
+    * **False Negatives (FN):** Incorrectly predicted negative instances (Type II error).
+* **Metrics Derived from Confusion Matrix:**
+    * **Accuracy:** Overall correctness of the model (TP + TN) / (TP + TN + FP + FN).
+    * **Precision:** Ability to correctly predict positive instances (TP) / (TP + FP).
+    * **Recall (Sensitivity):** Ability to identify all positive instances (TP) / (TP + FN).
+    * **Specificity:** Ability to correctly identify negative instances (TN) / (TN + FP).
+    * **F1-score:** Harmonic mean of precision and recall, balancing both aspects (2 * Precision * Recall) / (Precision + Recall).
+* **Applications:**
+    * Evaluating the performance of classification models.
+    * Understanding the types of errors made by the model.
+    * Comparing different models.
+    * Identifying areas for improvement in the model.
+* **Visual Representation:**
+    * Often represented as a 2x2 table or a heatmap.
+* **Interpretation:**
+    * A high number of TP and TN indicates good performance.
+    * A high number of FP and FN indicates poor performance.
+    * The specific metrics to focus on depend on the application and the cost of different types of errors.
+"
+3,"- Probability & Statistics
+",- Metrics and Model Diagnostics,- Residuals,- Examine the residuals of the regression line,"## Residuals: Examining the Regression Line
+
+**1. Definition and Calculation:**
+* Definition of residuals as the difference between observed and predicted values.
+* Formula for calculating residuals.
+
+**2. Interpretation of Residuals:**
+* Understanding what positive and negative residuals represent.
+* Identifying patterns in residuals (e.g., trends, clusters).
+
+**3. Residual Plots:**
+* Types of residual plots (e.g., scatter plot, histogram).
+* How to interpret residual plots to assess model fit.
+
+**4. Assumptions of Linear Regression:**
+* The role of residuals in verifying assumptions.
+* Identifying violations of assumptions (e.g., non-linearity, heteroscedasticity).
+
+**5. Applications of Residual Analysis:**
+* Detecting outliers and influential points.
+* Assessing the validity of the regression model.
+* Identifying potential areas for improvement in the model.
+"
+4,"- Probability & Statistics
+",- Metrics and Model Diagnostics,- Residuals,- Analyze a residuals plot,"## Residuals and Residual Plots
+
+### 1. Residuals
+
+* **Definition:** The difference between the observed value of a dependent variable and the predicted value based on a regression model.
+* **Formula:** Residual = Observed Value - Predicted Value
+* **Interpretation:**  
+    * Positive residual: The model underestimates the actual value.
+    * Negative residual: The model overestimates the actual value.
+    * Zero residual: The model perfectly predicts the actual value.
+
+### 2. Analyzing a Residual Plot
+
+* **Purpose:** To assess the assumptions of linear regression and identify potential problems with the model.
+* **Key Features to Look For:**
+    * **Randomness:** Residuals should be randomly scattered around zero, indicating no systematic pattern.
+    * **Constant Variance:** The spread of residuals should be consistent across the range of predicted values.
+    * **Linearity:** The relationship between residuals and predicted values should be linear (no curves or patterns).
+    * **Outliers:**  Points with unusually large residuals, potentially indicating influential data points.
+* **Common Patterns and Their Implications:**
+    * **Curved Pattern:** Non-linear relationship between variables, suggesting a need for a different model.
+    * **Funnel Shape:** Non-constant variance, indicating heteroscedasticity.
+    * **Clusters of Residuals:** Potential for omitted variables or interactions.
+    * **Large Residuals:** Potential outliers, requiring further investigation.
+* **Interpreting Residual Plots:**
+    * Randomly scattered residuals with constant variance indicate a good model fit.
+    * Non-random patterns or non-constant variance indicate potential problems with the model.
+    * Outliers require further analysis and may need to be addressed.
+
+### 3. Applications of Residual Analysis
+
+* **Model Selection:** Identifying the best model by comparing residual plots of different models.
+* **Assumption Checking:** Verifying the assumptions of linear regression (linearity, constant variance, normality of residuals).
+* **Outlier Detection:** Identifying influential data points that may be skewing the model.
+* **Model Improvement:** Identifying areas where the model can be improved by addressing non-random patterns or non-constant variance.
+"
+5,"- Probability & Statistics
+",- Metrics and Model Diagnostics,- Residuals,- Measure the direction of the vector of residuals,"## Residuals: Measuring the Direction of the Residual Vector
+
+### Key Concepts:
+
+* **Residuals:** The difference between the observed value of a dependent variable and the predicted value from a regression model.
+* **Residual Vector:** A vector containing all the residuals from a regression analysis.
+* **Direction of the Residual Vector:**  The overall trend or pattern exhibited by the residuals. This can indicate whether the model is systematically under- or over-predicting values in certain regions of the data. 
+* **Visualizing Residual Direction:**
+    * **Scatterplots:** Plotting residuals against predicted values or independent variables can reveal patterns in the residuals.
+    * **Residual Histograms:**  Show the distribution of residuals, indicating whether they are symmetrically distributed or skewed.
+* **Interpreting Residual Direction:**
+    * **Systematic Patterns:**  Non-random patterns in the residuals suggest that the model may not be a good fit for the data.
+    * **Random Patterns:** Randomly scattered residuals indicate a good fit, suggesting that the model is capturing the underlying relationships in the data.
+* **Addressing Residual Direction:**
+    * **Transformations:**  Applying transformations to the dependent or independent variables can sometimes improve the fit of the model and reduce systematic patterns in residuals.
+    * **Adding Variables:** Including additional explanatory variables in the model can help capture more of the variation in the data and reduce the magnitude of residuals.
+    * **Non-linear Models:** If the relationship between variables is non-linear, using a non-linear model instead of a linear model can improve the fit and reduce systematic patterns in residuals. 
+"
+6,"- Probability & Statistics
+",- Metrics and Model Diagnostics,- Effect Sizes,- Calculate Cohen's d,"## Effect Sizes - Calculate Cohen's d
+
+### Key Concepts:
+
+- **Effect Size:** A standardized measure of the magnitude of an effect or difference between two groups.
+- **Cohen's d:** A commonly used effect size measure that represents the difference between two group means in standard deviation units.
+- **Mean Difference:** The difference between the means of the two groups being compared.
+- **Pooled Standard Deviation:** A measure of the overall variability of the data, taking into account the variability within each group.
+- **Interpretation of Cohen's d:**
+    - **Small effect:** d = 0.2
+    - **Medium effect:** d = 0.5
+    - **Large effect:** d = 0.8
+- **Calculation of Cohen's d:**
+    - **Formula:** d = (Mean<sub>1</sub> - Mean<sub>2</sub>) / Pooled Standard Deviation
+    - **Steps:**
+        1. Calculate the mean of each group.
+        2. Calculate the pooled standard deviation.
+        3. Substitute the values into the formula to calculate Cohen's d.
+- **Assumptions:**
+    - Data should be normally distributed.
+    - Groups should have equal variances.
+- **Applications:**
+    - Comparing the effectiveness of different treatments.
+    - Evaluating the impact of interventions.
+    - Determining the practical significance of research findings.
+- **Limitations:**
+    - Does not account for the sample size.
+    - Can be influenced by outliers.
+    - Interpretation can be subjective.
+- **Alternatives to Cohen's d:**
+    - Hedges' g
+    - Glass's delta
+    - r (correlation coefficient)
+- **Software for calculating Cohen's d:**
+    - SPSS
+    - R
+    - Excel
+    - Online calculators"
+7,"- Probability & Statistics
+",- Metrics and Model Diagnostics,- Effect Sizes,- Calculate R-squared,"## Effect Sizes and Calculating R-squared
+
+### Effect Sizes
+
+* **Definition:** A measure of the magnitude of an effect or relationship between variables.
+* **Types of Effect Sizes:**
+    * **Cohen's d:** For comparing means of two groups.
+    * **Pearson's r:** For measuring linear correlation between two variables.
+    * **Eta-squared (η²):** For measuring the proportion of variance explained by a factor in ANOVA.
+    * **Odds Ratio:** For comparing the odds of an event occurring in two groups.
+    * **Relative Risk:** For comparing the risk of an event occurring in two groups.
+* **Interpretation:** 
+    * **Small effect size:**  A small difference or weak relationship.
+    * **Medium effect size:** A moderate difference or relationship.
+    * **Large effect size:** A substantial difference or strong relationship.
+* **Importance:** 
+    * Helps to understand the practical significance of research findings.
+    * Allows for comparison of results across different studies.
+    * Provides a more complete picture of the effect beyond statistical significance.
+
+### Calculating R-squared
+
+* **Definition:** A statistical measure that represents the proportion of variance in the dependent variable that is explained by the independent variable(s) in a regression model.
+* **Formula:** R-squared = (SSR / SST)
+    * SSR: Sum of Squares Regression (explained variance)
+    * SST: Total Sum of Squares (total variance)
+* **Interpretation:**
+    * R-squared ranges from 0 to 1.
+    * A higher R-squared value indicates a better fit of the model to the data.
+    * For example, an R-squared of 0.75 means that 75% of the variation in the dependent variable is explained by the independent variable(s).
+* **Uses:**
+    * Assessing the goodness-of-fit of a regression model.
+    * Comparing the performance of different regression models.
+    * Understanding the relative importance of different independent variables.
+* **Limitations:**
+    * R-squared can be inflated by adding more independent variables to the model.
+    * It does not necessarily indicate a causal relationship between variables.
+    * It is not a measure of the practical significance of the effect. 
+"
+8,"- Probability & Statistics
+",- Metrics and Model Diagnostics,- Effect Sizes,- Calculate area under the ROC curve,"## Effect Sizes and Area Under the ROC Curve
+
+### Effect Sizes
+
+* **Definition:** A measure of the magnitude of an effect or the strength of a relationship between variables.
+* **Types of Effect Sizes:**
+    * **Cohen's d:** Measures the difference between two group means in standard deviation units.
+    * **Hedge's g:** A variation of Cohen's d that corrects for small sample sizes.
+    * **Pearson's r:** Measures the strength and direction of a linear relationship between two variables.
+    * **Odds Ratio:** Measures the ratio of the odds of an event occurring in one group compared to another.
+    * **Relative Risk:** Measures the ratio of the risk of an event occurring in one group compared to another.
+* **Interpretation:** Effect sizes provide a standardized way to compare the magnitude of effects across different studies.
+* **Importance:** Helps to determine the practical significance of research findings.
+
+### Area Under the ROC Curve (AUC)
+
+* **Definition:** A measure of the ability of a binary classifier to distinguish between two classes (e.g., positive and negative).
+* **Interpretation:**
+    * AUC ranges from 0 to 1.
+    * An AUC of 1 indicates perfect classification.
+    * An AUC of 0.5 indicates random classification.
+* **Calculation:**
+    * Based on the Receiver Operating Characteristic (ROC) curve, which plots the true positive rate against the false positive rate at different classification thresholds.
+    * The area under this curve represents the probability that the classifier will rank a randomly chosen positive instance higher than a randomly chosen negative instance.
+* **Applications:**
+    * Evaluating the performance of diagnostic tests.
+    * Comparing the performance of different classification models.
+* **Relationship to Effect Size:**
+    * AUC can be considered a type of effect size, as it quantifies the magnitude of the difference between the two classes.
+    * Larger AUC values indicate stronger effects.
+
+### Connecting Effect Sizes and AUC
+
+* **Effect sizes can be used to interpret AUC values.** For example, a large AUC value might correspond to a large Cohen's d for a binary outcome.
+* **AUC can be used to calculate effect sizes for binary outcomes.**  There are methods to translate AUC into Cohen's d or other effect size measures.
+* **Understanding both effect sizes and AUC is crucial for a comprehensive understanding of the strength and significance of research findings.**"
+9,"- Probability & Statistics
+",- Probabilistic Theory,- Probabilistic Independence,- Identify independent events in probabilities,"## Probabilistic Independence
+
+### Key Concepts:
+
+* **Definition:** Two events are independent if the occurrence of one event does not affect the probability of the other event occurring.
+* **Mathematical Formula:**
+    * P(A and B) = P(A) * P(B)
+    * P(A|B) = P(A)
+    * P(B|A) = P(B)
+* **Identifying Independent Events:**
+    * **Intuitive understanding:** Consider if the events logically influence each other.
+    * **Using the formulas:** Check if the probability of one event changes given the occurrence of the other event.
+* **Examples:**
+    * Flipping a coin twice: The outcome of the first flip does not affect the outcome of the second flip.
+    * Drawing two cards from a deck with replacement: Replacing the first card ensures the second draw is independent of the first.
+* **Non-Independent Events:**
+    * Drawing two cards from a deck without replacement: The probability of drawing a specific card on the second draw depends on what card was drawn first.
+    * Rolling a die and then flipping a coin: The outcome of the die roll does not affect the outcome of the coin flip.
+* **Applications:**
+    * **Risk Assessment:** Understanding independent events helps in calculating the probability of multiple events occurring.
+    * **Decision Making:** Identifying independent events allows for better informed decisions based on the probability of outcomes.
+    * **Statistical Analysis:** Independent events are crucial for many statistical models and tests.
+* **Common Misconceptions:**
+    * Correlation does not imply causation: Events can be correlated without being independent.
+    * Independence is not the same as mutually exclusive: Mutually exclusive events cannot occur simultaneously, while independent events can.
+"
+10,"- Probability & Statistics
+",- Probabilistic Theory,- Probabilistic Independence,- Compute the probability of a series of n independent events,"## Probabilistic Independence
+
+### Key Concepts:
+
+* **Definition of Independence:** Two events are independent if the occurrence of one event does not affect the probability of the other event occurring.
+* **Multiplication Rule for Independent Events:** The probability of a series of n independent events occurring is the product of the probabilities of each individual event. 
+    *  P(A and B and ... and N) = P(A) * P(B) * ... * P(N)
+* **Example:** Flipping a coin multiple times. Each flip is independent of the previous flips.
+* **Conditional Probability:**  The probability of an event occurring given that another event has already occurred. In the context of independence, the conditional probability of an event is the same as its unconditional probability.
+* **Distributions:**  Understanding how to apply the concept of independence to different probability distributions, such as the Bernoulli distribution or the binomial distribution. 
+* **Real-World Applications:**  Examples of how probabilistic independence is used in various fields, such as:
+    * **Risk Assessment:**  Calculating the probability of multiple independent events occurring, such as equipment failures in a system.
+    * **Machine Learning:**  Building models that assume independence between features.
+    * **Statistical Inference:**  Testing hypotheses about the independence of events."
+11,"- Probability & Statistics
+",- Probabilistic Theory,- Generative and Discriminative Models,- Describe the features and uses of generative models,"## Generative Models: Features and Uses
+
+**1. Introduction**
+
+* Definition of generative models
+* Distinguishing generative models from discriminative models
+
+**2. Key Features of Generative Models**
+
+* **Data Generation:** Ability to create new data samples similar to the training data.
+* **Probability Distribution Learning:** Learn the underlying probability distribution of the data.
+* **Implicit vs. Explicit Models:**
+    * Implicit models define the distribution indirectly through a process for generating samples.
+    * Explicit models define the distribution directly through a mathematical function.
+* **Generative Adversarial Networks (GANs):**
+    * A framework for training generative models using a competitive process between a generator and a discriminator.
+* **Variational Autoencoders (VAEs):**
+    * A type of generative model that uses a probabilistic encoder-decoder architecture.
+
+**3. Applications of Generative Models**
+
+* **Image Generation:** Creating realistic images, manipulating existing images, generating images from text descriptions.
+* **Text Generation:** Writing stories, poems, and articles; translating languages; generating code.
+* **Audio Generation:** Creating music, speech synthesis, generating sound effects.
+* **Data Augmentation:** Increasing the size and diversity of training datasets.
+* **Drug Discovery:** Generating novel drug candidates.
+* **Anomaly Detection:** Identifying unusual patterns in data.
+* **Art and Design:** Creating unique and creative artworks.
+* **Robotics:** Generating realistic simulations for robot training.
+
+**4. Advantages of Generative Models**
+
+* **Data generation:** Allows for creating new data samples, which can be useful for various tasks.
+* **Understanding data distribution:** Provides insights into the underlying structure of the data.
+* **Creativity and innovation:** Enables the generation of novel and creative outputs.
+
+**5. Limitations of Generative Models**
+
+* **Computational complexity:** Training and generating data can be computationally expensive.
+* **Mode collapse:** Generative models may fail to capture the full diversity of the data distribution.
+* **Ethical concerns:** Potential for misuse, such as generating fake news or deepfakes.
+
+**6. Future Directions**
+
+* **Improving model efficiency and scalability:** Developing faster and more efficient algorithms.
+* **Addressing ethical concerns:** Developing safeguards and guidelines for responsible use.
+* **Exploring new applications:** Expanding the use of generative models to new domains and tasks.
+"
+12,"- Probability & Statistics
+",- Probabilistic Theory,- Generative and Discriminative Models,- Describe the features and uses of discriminative models,"## Generative and Discriminative Models: Discriminative Models
+
+### Features of Discriminative Models:
+
+* **Focus on Decision Boundaries:** Discriminative models aim to learn the boundary between different classes, rather than the underlying data distribution.
+* **Conditional Probability Estimation:** They directly model the conditional probability of a class label given the input features.
+* **Data-Driven:** They learn from labeled data and rely heavily on the quality and quantity of training data.
+* **Efficient for Classification:** They excel at classifying new data points based on learned decision boundaries.
+
+### Uses of Discriminative Models:
+
+* **Image Classification:** Identifying objects, scenes, and faces in images.
+* **Spam Filtering:** Classifying emails as spam or not spam.
+* **Sentiment Analysis:** Determining the emotional tone of text data.
+* **Fraud Detection:** Identifying potentially fraudulent transactions.
+* **Medical Diagnosis:** Predicting the presence or absence of diseases based on patient data.
+* **Natural Language Processing:** Tasks like text classification, sentiment analysis, and machine translation.
+* **Speech Recognition:** Converting spoken language into text.
+* **Object Detection:** Identifying and locating objects within images or videos.
+* **Recommendation Systems:** Predicting user preferences and recommending relevant items.
+"
+13,"- Probability & Statistics
+",- Probabilistic Theory,- Conditional Probabilities,- Calculate conditional probabilities using the Bayes rule,"## Conditional Probabilities
+
+### Main Concepts:
+
+* **Definition of Conditional Probability:**
+    * The probability of an event occurring given that another event has already occurred.
+    * Notation: P(A|B) - the probability of event A happening given that event B has already happened.
+* **Bayes' Theorem:**
+    * A mathematical formula that calculates the conditional probability of an event based on prior knowledge of related events.
+    * Formula: P(A|B) = [P(B|A) * P(A)] / P(B)
+* **Understanding the Components of Bayes' Theorem:**
+    * **P(A|B):** The conditional probability we want to calculate.
+    * **P(B|A):** The likelihood of event B happening given that event A has already happened.
+    * **P(A):** The prior probability of event A happening.
+    * **P(B):** The prior probability of event B happening.
+* **Applications of Bayes' Theorem:**
+    * **Medical Diagnosis:** Calculating the probability of a disease given a specific test result.
+    * **Spam Filtering:** Identifying spam emails based on certain keywords or patterns.
+    * **Machine Learning:** Updating the probability of a model's prediction based on new data.
+* **Understanding the Relationship between Conditional Probability and Bayes' Theorem:**
+    * Bayes' Theorem is a specific application of conditional probability.
+    * It allows us to update our beliefs about an event based on new evidence.
+* **Examples of Calculating Conditional Probabilities using Bayes' Theorem:**
+    * **Example 1:** Calculating the probability of a patient having a disease given a positive test result.
+    * **Example 2:** Calculating the probability of an email being spam given certain keywords.
+* **Limitations of Bayes' Theorem:**
+    * Requires accurate prior probabilities, which can be difficult to obtain.
+    * Can be computationally expensive for complex problems.
+* **Alternative Approaches to Conditional Probability:**
+    * **Tree Diagrams:** Visual representation of possible outcomes and probabilities.
+    * **Contingency Tables:** Tables that summarize the frequencies of events.
+"
+14,"- Probability & Statistics
+",- Probabilistic Theory,- Conditional Probabilities,- Calculate the total probability of events,"## Conditional Probabilities - Calculate the Total Probability of Events
+
+### Key Concepts:
+
+* **Conditional Probability:** The probability of an event occurring given that another event has already occurred. 
+    * **Notation:** P(A|B) represents the probability of event A happening given that event B has already happened.
+* **Bayes' Theorem:** A mathematical formula that relates conditional probabilities. It allows us to calculate the probability of an event based on prior knowledge and new evidence.
+    * **Formula:** P(A|B) = [P(B|A) * P(A)] / P(B)
+* **Total Probability Theorem:**  A theorem that states that the total probability of an event can be calculated by summing the probabilities of all possible mutually exclusive events that could lead to that event.
+    * **Formula:** P(A) = P(A|B1) * P(B1) + P(A|B2) * P(B2) + ... + P(A|Bn) * P(Bn)
+* **Independence:** Two events are independent if the occurrence of one does not affect the probability of the other.
+    * **Property:** P(A|B) = P(A) if A and B are independent.
+* **Tree Diagrams:** A visual representation of events and their probabilities, useful for understanding conditional probabilities and calculating total probabilities.
+* **Applications:**
+    * **Medical Diagnosis:** Determining the probability of a disease given a positive test result.
+    * **Risk Assessment:** Calculating the probability of a financial loss given certain market conditions.
+    * **Machine Learning:**  Using conditional probabilities to build predictive models. 
+"
+15,"- Probability & Statistics
+",- Probabilistic Theory,- Probability Distributions,- Find a probability using a Bernoulli distribution,"## Probability Distributions: Bernoulli Distribution
+
+### Key Concepts:
+
+* **Bernoulli Trial:** A single experiment with two possible outcomes, typically labeled ""success"" and ""failure.""
+* **Probability of Success (p):** The probability of the desired outcome occurring in a single trial.
+* **Probability of Failure (1-p):** The probability of the undesired outcome occurring in a single trial.
+* **Bernoulli Distribution:** A discrete probability distribution that describes the probability of a single success or failure in a Bernoulli trial.
+* **Probability Mass Function (PMF):**  A function that assigns probabilities to each possible outcome of a discrete random variable. For a Bernoulli distribution, the PMF is:
+    * P(X = 1) = p (probability of success)
+    * P(X = 0) = 1 - p (probability of failure)
+* **Expected Value (E[X]):** The average outcome of a Bernoulli trial, calculated as E[X] = p.
+* **Variance (Var[X]):** A measure of the spread of the distribution, calculated as Var[X] = p(1-p).
+* **Standard Deviation (SD[X]):** The square root of the variance, representing the typical deviation from the expected value.
+* **Finding Probability Using Bernoulli Distribution:**
+    * Identify the probability of success (p) for a single trial.
+    * Determine the desired outcome (success or failure).
+    * Use the PMF to calculate the probability of the desired outcome:
+        * P(X = 1) = p if the desired outcome is success.
+        * P(X = 0) = 1 - p if the desired outcome is failure. 
+"
+16,"- Probability & Statistics
+",- Probabilistic Theory,- Probability Distributions,- Differentiate between different types of distributions,"## Probability Distributions: Differentiating Types
+
+Here's a breakdown of key concepts related to probability distributions, focusing on differentiating between various types:
+
+**1. Fundamental Concepts:**
+
+* **Random Variable:** A variable whose value is a numerical outcome of a random phenomenon.
+* **Probability Distribution:** A mathematical function that describes the likelihood of different outcomes of a random variable.
+* **Discrete vs. Continuous:** 
+    * **Discrete:**  A variable that can only take on a finite number of values or a countably infinite number of values.
+    * **Continuous:** A variable that can take on any value within a given range.
+
+**2. Types of Discrete Distributions:**
+
+* **Bernoulli:** Represents the probability of success or failure in a single trial.
+* **Binomial:**  Represents the probability of a certain number of successes in a fixed number of independent trials.
+* **Poisson:** Represents the probability of a certain number of events occurring in a fixed interval of time or space.
+* **Geometric:** Represents the probability of the number of trials needed to achieve the first success.
+* **Negative Binomial:** Represents the probability of the number of trials needed to achieve a certain number of successes.
+
+**3. Types of Continuous Distributions:**
+
+* **Normal:** A bell-shaped distribution, widely used in statistics.
+* **Exponential:** Represents the probability of the time until an event occurs.
+* **Uniform:** Represents the probability of any value within a given range being equally likely.
+* **Gamma:** Represents the probability of the time until a certain number of events occur.
+* **Beta:** Represents the probability of a value within a given range, with the shape of the distribution determined by parameters.
+
+**4. Key Properties for Differentiation:**
+
+* **Shape:**  The visual appearance of the distribution (e.g., bell-shaped, skewed).
+* **Parameters:** Values that define the specific form of the distribution.
+* **Mean and Variance:** Measures of central tendency and spread.
+* **Applications:** The types of problems or scenarios where each distribution is most appropriate.
+
+**5. Practical Considerations:**
+
+* **Data Analysis:** Identifying the appropriate distribution for a given dataset.
+* **Modeling:** Using distributions to represent real-world phenomena.
+* **Statistical Inference:** Making conclusions about populations based on sample data.
+
+**Note:** This list provides a starting point.  Delving deeper into each distribution involves understanding its specific formulas, properties, and applications. 
+"
+17,"- Probability & Statistics
+",- Probabilistic Theory,- Probability Distributions,- Find a probability using a uniform distribution,"## Probability Distributions: Finding Probabilities with a Uniform Distribution
+
+**1. Uniform Distribution:**
+
+* **Definition:** A probability distribution where all outcomes within a given range are equally likely.
+* **Characteristics:**
+    * Constant probability density function within the range.
+    * Zero probability density outside the range.
+* **Examples:**
+    * Rolling a fair die (each face has equal probability).
+    * Randomly selecting a number between 0 and 1.
+
+**2. Finding Probabilities:**
+
+* **Formula:**  
+    * For a continuous uniform distribution: P(a ≤ X ≤ b) = (b - a) / (c - d), where:
+        * a and b are the lower and upper bounds of the desired interval.
+        * c and d are the lower and upper bounds of the entire distribution.
+    * For a discrete uniform distribution: P(X = x) = 1 / n, where:
+        * n is the number of possible outcomes.
+* **Steps:**
+    1. Identify the range of the uniform distribution.
+    2. Determine the interval for which you want to calculate the probability.
+    3. Apply the appropriate formula based on whether the distribution is continuous or discrete.
+
+**3. Examples:**
+
+* **Continuous Uniform Distribution:**
+    * What is the probability of getting a random number between 0.2 and 0.7 from a uniform distribution between 0 and 1?
+* **Discrete Uniform Distribution:**
+    * What is the probability of rolling a 4 on a fair six-sided die?
+
+**4. Applications:**
+
+* **Simulations:** Generating random numbers with a uniform distribution.
+* **Statistical analysis:** Estimating probabilities and confidence intervals.
+* **Decision-making:** Evaluating risks and uncertainties in business and finance.
+"
+18,"- Probability & Statistics
+",- Probabilistic Theory,- Probability Distributions,- Find a probability using a Poisson distribution,"## Probability Distributions: Finding Probabilities Using a Poisson Distribution
+
+### Key Concepts:
+
+* **Poisson Distribution:**
+    * Definition: A discrete probability distribution that describes the probability of a given number of events occurring in a fixed interval of time or space, if these events occur with a known average rate and independently of the time since the last event.
+    * Formula:  P(X = k) = (e^(-λ) * λ^k) / k! 
+        * Where:
+            * P(X = k) is the probability of observing k events
+            * λ is the average rate of events in the given interval
+            * e is the base of the natural logarithm (approximately 2.71828)
+            * k! is the factorial of k (k! = k * (k-1) * (k-2) * ... * 2 * 1)
+* **Parameters of the Poisson Distribution:**
+    * **λ (Lambda):** The average rate of events in the given interval. This is the only parameter of the Poisson distribution.
+* **Applications of the Poisson Distribution:**
+    * Counting rare events in a fixed interval of time or space, such as:
+        * The number of customers arriving at a store in an hour
+        * The number of defects in a manufactured product
+        * The number of accidents on a highway in a month
+* **Calculating Probabilities:**
+    * Using the Poisson formula, we can calculate the probability of observing a specific number of events in a given interval.
+    * Example: If the average number of customers arriving at a store in an hour is 5, what is the probability of observing 3 customers in the next hour?
+        * We can use the Poisson formula with λ = 5 and k = 3 to calculate this probability.
+* **Interpreting Probabilities:**
+    * The probability of observing a specific number of events is a measure of how likely it is to occur.
+    * For example, a probability of 0.1 means that there is a 10% chance of observing that specific number of events.
+* **Using Poisson Tables or Software:**
+    * Poisson tables or statistical software can be used to calculate probabilities for different values of λ and k.
+* **Limitations of the Poisson Distribution:**
+    * The Poisson distribution assumes that events occur independently of each other.
+    * The average rate of events (λ) must be constant over the given interval.
+    * The Poisson distribution is not suitable for modeling events that occur in clusters or have a high probability of occurring close together.
+"
+19,"- Probability & Statistics
+",- Probabilistic Theory,- Probability Distributions,- Find a probability using a binomial distribution,"## Probability Distributions - Finding a Probability using a Binomial Distribution
+
+### Key Concepts:
+
+* **Binomial Distribution:**
+    * Definition: A discrete probability distribution that describes the probability of obtaining a certain number of successes in a sequence of independent Bernoulli trials (trials with only two possible outcomes).
+    * Requirements:
+        * Fixed number of trials (n)
+        * Each trial is independent of the others
+        * Two possible outcomes for each trial (success or failure)
+        * Probability of success (p) remains constant across trials
+* **Binomial Probability Formula:**
+    *  P(X = k) = (n choose k) * p^k * (1-p)^(n-k)
+        * P(X = k) represents the probability of getting exactly k successes in n trials.
+        * (n choose k) represents the binomial coefficient, which calculates the number of ways to choose k successes from n trials.
+        * p^k represents the probability of getting k successes.
+        * (1-p)^(n-k) represents the probability of getting (n-k) failures.
+* **Calculating Binomial Probabilities:**
+    * Using the formula directly
+    * Using statistical software or calculators (e.g., Excel, R, Python)
+* **Interpreting Binomial Probabilities:**
+    * Understanding the meaning of the calculated probability in the context of the problem
+* **Applications of Binomial Distribution:**
+    * Quality control
+    * Market research
+    * Medical trials
+    * Genetics
+    * Sports statistics
+* **Example:**
+    * A coin is flipped 10 times. What is the probability of getting exactly 6 heads? 
+        * n = 10 (number of trials)
+        * k = 6 (number of successes)
+        * p = 0.5 (probability of success on a single trial)
+        * Using the formula, we can calculate the probability.
+* **Related Concepts:**
+    * Bernoulli trial
+    * Expected value
+    * Variance
+    * Standard deviation
+    * Normal approximation to the binomial distribution"
+20,"- Probability & Statistics
+",- Probabilistic Theory,- Probability Distributions,- Find a probability using a normal distribution,"## Probability Distributions: Finding Probabilities Using a Normal Distribution
+
+### Key Concepts
+
+* **Normal Distribution:**
+    * Properties of the normal distribution (bell-shaped curve, mean and standard deviation)
+    * Standard Normal Distribution (mean = 0, standard deviation = 1)
+    * Z-score (standardized score)
+* **Finding Probabilities:**
+    * Using the Z-table or statistical software
+    * Calculating probabilities for specific intervals
+    * Understanding the relationship between Z-scores and probabilities
+* **Applications:**
+    * Real-world examples of normal distributions (e.g., heights, weights, IQ scores)
+    * Using normal distribution to make predictions and inferences
+* **Important Considerations:**
+    * Assumptions of normality
+    * Impact of outliers on the distribution
+    * Limitations of using the normal distribution for certain data sets
+"
+21,"- Probability & Statistics
+",- Probabilistic Theory,- Operations on Probabilities,- Find the probability of difference and complement,"## Operations on Probabilities: Difference and Complement
+
+### 1. Probability of the Difference of Events
+
+* **Definition:** The probability of the difference of two events, A and B, is the probability that event A occurs but event B does not.
+* **Notation:** P(A - B) or P(A \ B)
+* **Formula:** P(A - B) = P(A) - P(A ∩ B)
+* **Understanding:** This formula states that the probability of A occurring without B is equal to the probability of A minus the probability of both A and B occurring.
+
+### 2. Probability of the Complement of an Event
+
+* **Definition:** The complement of an event A is the set of all outcomes in the sample space that are not in A.
+* **Notation:** A' or Aᶜ
+* **Formula:** P(A') = 1 - P(A)
+* **Understanding:** The probability of the complement of an event is equal to 1 minus the probability of the event itself. 
+* **Relationship with Difference:** The complement of an event A can be seen as the difference between the entire sample space and event A.
+
+### 3. Key Concepts and Properties
+
+* **Mutually Exclusive Events:** If events A and B are mutually exclusive, then P(A ∩ B) = 0, and P(A - B) = P(A).
+* **Independent Events:** If events A and B are independent, then P(A ∩ B) = P(A) * P(B), and P(A - B) = P(A) * (1 - P(B)).
+* **Conditional Probability:** The probability of event A occurring given that event B has already occurred can be used to calculate the probability of the difference. 
+* **Visual Representation:** Venn Diagrams can be helpful in visualizing the difference and complement of events. 
+
+### 4. Applications and Examples
+
+* **Quality Control:** Calculating the probability of a product being defective but not having a specific defect.
+* **Medical Testing:** Determining the probability of a patient having a disease but not showing specific symptoms.
+* **Market Research:** Analyzing the probability of a customer purchasing a product but not a specific competitor's product. 
+"
+22,"- Probability & Statistics
+",- Probabilistic Theory,- Operations on Probabilities,- Find the probability of intersection and union,"## Operations on Probabilities: Intersection and Union
+
+### 1. Basic Probability Concepts
+
+* **Sample Space:** The set of all possible outcomes of an experiment.
+* **Event:** A subset of the sample space.
+* **Probability of an Event:** The likelihood of an event occurring, expressed as a number between 0 and 1.
+
+### 2. Intersection of Events
+
+* **Definition:** The intersection of two events A and B, denoted as A ∩ B, is the event that both A and B occur.
+* **Formula:** P(A ∩ B) = P(A) * P(B|A) (where P(B|A) is the conditional probability of B occurring given that A has occurred).
+* **Mutually Exclusive Events:** Two events are mutually exclusive if they cannot occur simultaneously (A ∩ B = Ø).
+
+### 3. Union of Events
+
+* **Definition:** The union of two events A and B, denoted as A ∪ B, is the event that at least one of A or B occurs.
+* **Formula:** P(A ∪ B) = P(A) + P(B) - P(A ∩ B)
+* **Addition Rule for Mutually Exclusive Events:** If A and B are mutually exclusive, then P(A ∪ B) = P(A) + P(B).
+
+### 4. Conditional Probability
+
+* **Definition:** The probability of event B occurring given that event A has already occurred, denoted as P(B|A).
+* **Formula:** P(B|A) = P(A ∩ B) / P(A)
+
+### 5. Applications
+
+* **Real-world problems:**  Analyzing data, making predictions, and understanding the likelihood of events.
+* **Examples:**
+    * Probability of a student passing both Math and English.
+    * Probability of a company making a profit in a given quarter.
+    * Probability of a patient recovering from a specific disease. 
+"
+23,"- Probability & Statistics
+",- Probabilistic Theory,- Probability Density Function (PDF),- Calculate mean using a probability density function (PDF),"## Probability Density Function (PDF) and Calculating Mean
+
+### 1. Probability Density Function (PDF)
+
+* **Definition:** A function that describes the relative likelihood of a continuous random variable taking on a given value.
+* **Properties:**
+    * Non-negative: f(x) ≥ 0 for all x
+    * Total area under the curve is 1: ∫f(x)dx = 1
+* **Types:**
+    * Normal distribution
+    * Exponential distribution
+    * Uniform distribution
+    * etc.
+
+### 2. Calculating Mean using a PDF
+
+* **Formula:** E(X) = ∫x * f(x) dx, where:
+    * E(X) is the expected value (mean) of the random variable X
+    * f(x) is the probability density function of X
+    * The integral is taken over the entire range of X
+* **Interpretation:** The mean represents the average value of the random variable, weighted by its probability distribution.
+* **Example:** For a normal distribution with mean μ and standard deviation σ, the mean calculated using the PDF is also μ.
+
+### 3. Relationship between PDF and Cumulative Distribution Function (CDF)
+
+* **CDF:** The probability that a random variable X takes on a value less than or equal to a given value x.
+* **Relationship:** The PDF is the derivative of the CDF, and the CDF is the integral of the PDF.
+* **Using CDF to calculate mean:** E(X) = ∫x * dF(x), where F(x) is the CDF of X.
+
+### 4. Applications of Calculating Mean using PDF
+
+* **Statistical analysis:** Estimating the average value of a population based on a sample.
+* **Risk assessment:** Calculating the expected value of a financial investment or a potential loss.
+* **Engineering:** Designing systems that can withstand expected loads or stresses.
+* **Machine learning:** Training models to predict the average value of a target variable.
+"
+24,"- Probability & Statistics
+",- Probabilistic Theory,- Probability Density Function (PDF),- Calculate a variance using a probability density function (PDF),"## Probability Density Function (PDF)
+
+### Key Concepts:
+
+- **Definition:** A probability density function (PDF) describes the probability distribution of a continuous random variable. It represents the relative likelihood of a random variable taking on a specific value.
+- **Properties:**
+    - The area under the PDF curve over a given interval represents the probability of the random variable falling within that interval.
+    - The total area under the curve is always equal to 1.
+    - The PDF is always non-negative.
+- **Calculating Variance using PDF:**
+    - **Expected Value:** The expected value (mean) of a continuous random variable is calculated by integrating the product of the variable and its PDF over its entire range.
+    - **Variance:** The variance of a continuous random variable is calculated by integrating the squared difference between the variable and its expected value, weighted by the PDF, over its entire range. 
+
+###  Calculating Variance using a PDF
+
+- **Formula:**
+    - Variance (σ²) = ∫[ (x - μ)² * f(x) ] dx
+    - Where:
+        - σ² is the variance
+        - x is the random variable
+        - μ is the expected value (mean)
+        - f(x) is the probability density function
+        - ∫ represents integration over the entire range of x
+- **Steps:**
+    1. Calculate the expected value (μ) using the PDF.
+    2. Substitute the expected value and the PDF into the variance formula.
+    3. Evaluate the integral to obtain the variance.
+- **Example:**
+    - Consider a random variable X with PDF f(x) = 2x for 0 ≤ x ≤ 1.
+    - Calculate the variance of X.
+    - **Solution:**
+        - First, calculate the expected value: μ = ∫[ x * f(x) ] dx = ∫[ x * 2x ] dx = 2/3.
+        - Then, calculate the variance: σ² = ∫[ (x - 2/3)² * 2x ] dx = 1/18.
+"
+25,"- Probability & Statistics
+",- Probabilistic Theory,- Probability Density Function (PDF),- Calculate a probability using a density function,"## Probability Density Function (PDF)
+
+### Core Concepts:
+
+* **Definition:** A function that describes the relative likelihood of a continuous random variable taking on a specific value. 
+* **Properties:**
+    * Non-negative: The PDF is always greater than or equal to zero for all values of the random variable.
+    * Total area under the curve equals 1: The integral of the PDF over the entire range of the random variable is equal to 1.
+* **Calculating Probabilities:**
+    * **Area under the curve:** The probability of the random variable falling within a specific range is equal to the area under the PDF curve between those two values.
+    * **Integration:** Probabilities are calculated by integrating the PDF over the desired range.
+* **Types of PDFs:**
+    * **Normal distribution:** A bell-shaped curve, commonly used in many applications.
+    * **Exponential distribution:** Describes the time until an event occurs.
+    * **Uniform distribution:** All values within a range have equal probability.
+    * **Other distributions:** Many other distributions exist, each with specific properties and applications.
+* **Relationship to Cumulative Distribution Function (CDF):**
+    * The CDF is the integral of the PDF.
+    * The CDF gives the probability that the random variable is less than or equal to a specific value.
+* **Applications:**
+    * **Statistics:** Analyzing data, making inferences, and testing hypotheses.
+    * **Engineering:** Modeling and predicting the behavior of systems.
+    * **Finance:** Evaluating risk and making investment decisions.
+    * **Other fields:** Many other fields utilize PDFs for various purposes. 
+"
