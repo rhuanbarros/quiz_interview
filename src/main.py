@@ -276,7 +276,14 @@ def show_explanation():
             st.error("Wrong answer!")
         st.session_state.answered_correct = None
         
-    explanation = st.session_state.question["explanation"]
+    explanation = str(st.session_state.question["explanation"])
+    option_a_explanation = str(st.session_state.question["option_a_explanation"])
+    option_b_explanation = str(st.session_state.question["option_b_explanation"])
+    option_c_explanation = str(st.session_state.question["option_c_explanation"])
+    option_d_explanation = str(st.session_state.question["option_d_explanation"])
+
+    explanations = "\n\n".join([explanation, option_a_explanation, option_b_explanation, option_c_explanation, option_d_explanation])
+
     
     # st.write("")  # Empty string
     st.write("")  # Empty string
