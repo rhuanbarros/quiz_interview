@@ -175,13 +175,18 @@ def load_question():
     # I couldn't get to construct a query using supabase python
     # the query would be question.session_id is null or question.session_id != session_id
     # I coudl get the 'or' to work. I tried in the labs.
-    filtered = [ row for row in response.data if row['session_id'] != session_id ]
-
-    print(filtered)
+    #remove fro the list the questions already answered in teh current session
+    filtered = []
+    for row in response.data:
+        same_session_and_wrong_answer = row['session_id'] == session_id and row['correct_answer'] == False
+        different_session = row['session_id'] != session_id
+        if same_session_and_wrong_answer or different_session:
+            filtered.append( row )
+        
     
     # qty = len(response.data)
     qty = len(filtered)
-    # print(qty)
+    print(f"Quantity of questions in queue: {qty}")
 
     if qty > 0:
         st.session_state.question = response.data[0]
@@ -293,7 +298,7 @@ def show_explanation():
         """
     )
 
-    st.info(f'{explanation}', icon="ℹ️")
+    st.info(f'{explanations}', icon="ℹ️")
     
     st.write("")  # Empty string
     st.write("")  # Empty string
