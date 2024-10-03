@@ -30,6 +30,9 @@ if "first_run" not in st.session_state:
 if "page_flow" not in st.session_state:
     st.session_state.page_flow = FLOW_CONFIGURATION
 
+if "questions" not in st.session_state:
+    st.session_state.questions = None
+
 if "question" not in st.session_state:
     st.session_state.question = None
 
@@ -98,6 +101,12 @@ def on_click_verify_answer(answer):
             }).execute()
         st.session_state.answered_correct = answered_correct
 
+    if answer == "DONT_KNOW" or not answered_correct:
+        questions = st.session_state.questions
+        question = st.session_state.question
+
+        questions.insert(1, question)
+
     print("dont know")
     st.session_state.show_explanation = True
 
@@ -108,7 +117,7 @@ def on_click_end_session():
 def on_click_next():
     st.session_state.show_explanation = False
     st.session_state.show_elaborate_more = False
-    load_question()
+    # load_question()
 
 def on_click_start_over_again():
     # reset app state
@@ -135,7 +144,7 @@ def on_click_start(subject_matter_selected, level_selected):
     st.session_state.session_id = str(uuid.uuid4())
     st.session_state.page_flow = FLOW_QUESTION
 
-    load_question()
+    load_questions()
 
 def on_click_elaborate_more_the_explanation():
     chain = prompt_elaborate_more | llm
@@ -152,7 +161,7 @@ def on_click_elaborate_more_the_explanation():
 ############### OTHER FUNCTIONS
 #############################################
 
-def load_question():
+def load_questions():
     print("----------------- LOADING QUESTION FUNCTION ------------------")
 
     subject_matter_selected = st.session_state.subject_matter_selected
@@ -171,31 +180,35 @@ def load_question():
     # response = query.limit(1).execute()
     response = query.execute()
     session_id = st.session_state.session_id
+    questions = response.data
+    st.session_state.questions = questions
 
-    # I couldn't get to construct a query using supabase python
-    # the query would be question.session_id is null or question.session_id != session_id
-    # I coudl get the 'or' to work. I tried in the labs.
-    #remove fro the list the questions already answered in teh current session
-    filtered = []
-    for row in response.data:
-        same_session_and_wrong_answer = row['session_id'] == session_id and row['correct_answer'] == False
-        different_session = row['session_id'] != session_id
-        if same_session_and_wrong_answer or different_session:
-            filtered.append( row )
+    # # I couldn't get to construct a query using supabase python
+    # # the query would be question.session_id is null or question.session_id != session_id
+    # # I coudl get the 'or' to work. I tried in the labs.
+    # #remove fro the list the questions already answered in teh current session
+    # filtered = []
+    # for row in response.data:
+    #     same_session_and_wrong_answer = row['session_id'] == session_id and row['correct_answer'] == False
+    #     different_session = row['session_id'] != session_id
+    #     if same_session_and_wrong_answer or different_session:
+    #         filtered.append( row )
         
     
     # qty = len(response.data)
-    qty = len(filtered)
-    print(f"Quantity of questions in queue: {qty}")
+    qty = len(questions)
+    print(f"Total of questions in the database: {qty}")
 
-    if qty > 0:
-        st.session_state.question = response.data[0]
-        print(st.session_state.question)
-
-    else:
+    if qty <= 0:
         st.info("No more questions available")
         # st.session_state.no_more_questions_available = True
         st.session_state.page_flow = FLOW_RESULTS
+
+def load_question():
+    questions = st.session_state.questions
+    st.session_state.question = questions.pop()
+
+    print(f"Quantity of questions left: {len(questions)}")
 
 @st.cache_resource
 def get_subject_matter():
@@ -232,6 +245,9 @@ def show_config_train():
 
 def show_question():
     print("----------------- show_question ------------------")
+
+    load_question()
+
     question = st.session_state.question
 
     st.write(
