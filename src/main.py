@@ -345,6 +345,13 @@ def show_explanation():
 
     explanations = "\n\n".join([explanation, option_a_explanation, option_b_explanation, option_c_explanation, option_d_explanation])
 
+    _, col2, col3, col4, _ = st.columns([5,7,14,7,5])
+    
+    col2.button("Ends session", key="btn_end_session1", on_click=on_click_end_session, )
+    
+    col3.button("Elaborate more the explanation", key="btn_elaborate_more_the_explanation1", on_click=on_click_elaborate_more_the_explanation)
+    
+    col4.button("Next", key="btn_click_next1", on_click=on_click_next)
     
     # st.write("")  # Empty string
     st.write("")  # Empty string
@@ -361,11 +368,11 @@ def show_explanation():
     
     _, col2, col3, col4, _ = st.columns([5,7,14,7,5])
     
-    col2.button("Ends session", key="btn_end_session", on_click=on_click_end_session, )
+    col2.button("Ends session", key="btn_end_session2", on_click=on_click_end_session, )
     
-    col3.button("Elaborate more the explanation", on_click=on_click_elaborate_more_the_explanation)
+    col3.button("Elaborate more the explanation", key="btn_elaborate_more_the_explanation2", on_click=on_click_elaborate_more_the_explanation)
     
-    col4.button("Next", on_click=on_click_next)
+    col4.button("Next", key="btn_click_next2", on_click=on_click_next)
 
 def show_results():
     st.write(
